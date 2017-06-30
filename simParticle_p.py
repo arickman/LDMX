@@ -56,7 +56,7 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     pSum = 0
     for sParticle in sParticles :
-        pSum =+ np.linalg.norm(sParticle.getMomentum()
+        pSum += np.linalg.norm(sParticle.getMomentum()
     momentum = np.append(momentum, pSum) #should be an array of all 4's
 
 #Generate the plot
