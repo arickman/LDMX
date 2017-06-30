@@ -1,5 +1,4 @@
 #plot of simParticle momentum
-#plot of incident electron momentum at target vs bremmed gamma's summed energy
 from __future__ import division
 
 import ROOT as r
