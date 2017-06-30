@@ -20,18 +20,11 @@ def created_within_target(particle) :
     if abs(particle.getVertex()[2]) < 0.550 : return True 
     return False
 
-def getEnergySum(particle, energySum) :
-    daughterNum = particle.getDaughterCount()
-    #Base case
-    if (created_within_target(particle)) and (particle.getPdgID() == 22) : return particle.getEnergy() 
-    #Recursive case
-    else :
-    	for iDau in range(0, daughterNum):
-    		daughter = particle.getDaughter(iDau)
-    		energySum[0] += getEnergySum(daughter, energySum)
-
 def is_recoil(particle) :
        return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)
+
+def is_brem(particle) :
+        return (created_within_target(particle)) and (particle.getPdgID() == 22)
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
@@ -55,17 +48,17 @@ gammaEnergy = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #Loop through all of the particles in the track to find the incident (true parent) particle
+    energySum = 0
     for sParticle in sParticles :
+        if is_brem(sParticle) :
+            energySum += sParticle.getEnergy()
         if is_recoil(sParticle) : 
             parent = sParticle
-            break
 
-    #from the parent particle, populate the arrays to plot
+    #populate the vectors
+    gammaEnergy = np.append(gammaEnergy, energySum) 
     threeMomentum = parent.getEndPointMomentum()
     electronMomentum = np.append(electronMomentum, np.linalg.norm(threeMomentum))
-    energySum = [0]
-    getEnergySum(parent, energySum)
-    gammaEnergy = np.append(gammaEnergy, energySum[0])
 
 #Generate the plot
 plt.plot(electronMomentum, gammaEnergy, 'b--')
