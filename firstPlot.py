@@ -30,10 +30,8 @@ def getEnergySum(self, particle, energySum) :
     		daughter = particle.getDaughter(iDau)
     		energySum[0] += getEnergySum(daughter, energySum)
 
-def getParent(particle) :
-    while (particle.getParentCount() != 0) :
-        particle = particle.getParent()
-    return particle
+def is_recoil(self, particle) :
+       return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
@@ -49,21 +47,24 @@ r.gSystem.Load(ldmx_lib_path)
 rfile = r.TFile(args.rfile_path)
 tree = rfile.Get("LDMX_Events")
 
-sParticle = r.TClonesArray('ldmx::SimParticle')
-tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticle))
+sParticles = r.TClonesArray('ldmx::SimParticle')
+tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 electronMomentum = []
 gammaEnergy = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
-    #particle = sParticle.SimParticle() #is this just a random particle? How is this class constructed? Is this a single particle of a track?
     #Loop through all of the particles in the track to find the incident (true parent) particle
-    max_parent = getParent(sParticle)
+    for sParticle in sParticles :
+        if is_recoil(sParticle) : 
+            parent = sParticle
+            break
+
     #from the parent particle, populate the arrays to plot
-    threeMomentum = max_parent.getEndPointMomentum()
+    threeMomentum = parent.getEndPointMomentum()
     electronMomentum = np.append(electronMomentum, np.linalg.norm(threeMomentum))
     energySum[0] = 0
-    getEnergySum(max_parent, energySum)
+    getEnergySum(parent, energySum)
     gammaEnergy = np.append(gammaEnergy, energySum[0])
 
 #Generate the plot
