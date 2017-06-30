@@ -63,7 +63,7 @@ for entry in xrange(0, tree.GetEntries()):
     #from the parent particle, populate the arrays to plot
     threeMomentum = parent.getEndPointMomentum()
     electronMomentum = np.append(electronMomentum, np.linalg.norm(threeMomentum))
-    energySum[0] = 0
+    energySum = [0]
     getEnergySum(parent, energySum)
     gammaEnergy = np.append(gammaEnergy, energySum[0])
 
