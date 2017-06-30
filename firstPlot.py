@@ -15,12 +15,12 @@ from matplotlib.colors import LogNorm
 from numpy import linalg as la
 from scipy.stats import norm
 
-def created_within_target(self, particle) :
+def created_within_target(particle) :
     #print "Vertex: %s" % particle.getVertex()[2]
     if abs(particle.getVertex()[2]) < 0.550 : return True 
     return False
 
-def getEnergySum(self, particle, energySum) :
+def getEnergySum(particle, energySum) :
     daughterNum = particle.getDaughterCount()
     #Base case
     if (created_within_target(particle)) and (particle.getPdgID() == 22) : return particle.getEnergy() 
@@ -30,7 +30,7 @@ def getEnergySum(self, particle, energySum) :
     		daughter = particle.getDaughter(iDau)
     		energySum[0] += getEnergySum(daughter, energySum)
 
-def is_recoil(self, particle) :
+def is_recoil(particle) :
        return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)
 
 parser = argparse.ArgumentParser(description='')
