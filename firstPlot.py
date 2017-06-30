@@ -69,6 +69,8 @@ for entry in xrange(0, tree.GetEntries()):
 
 #Generate the plot
 plt.plot(electronMomentum, gammaEnergy, 'b--')
-#plt.axis() hopefully this is automatic
+plt.title("Incident Electron Momentum vs Summed Energy from Bremmed Photon")
+plt.xlabel("Electron Momentum")
+plt.ylabel("Photon Energy")
 plt.show()
 
