@@ -1,3 +1,4 @@
+#plot of incident electron energy at target vs bremmed gamma's summed energy
 from __future__ import division
 
 import ROOT as r
