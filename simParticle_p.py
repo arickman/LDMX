@@ -41,6 +41,19 @@ for entry in xrange(0, tree.GetEntries()):
     momentum = np.append(momentum, pSum) #should be an array of all 4's
 
 #Generate the plot
+
+
+
+#Try it the ROOT way
+hist = TH1D('momHist', 'Momentum', 20, -150, 150)
+fill_hist(hist, momentum, None) #takes in weights as the 3rd arg
+c1 = TCanvas("c1")
+hist.SetTitle( "Momentum")
+hist.Draw(" ")
+c2.Print("simParticle_p.pdf")
+
+
+
 plt.hist(momentum)
 plt.title("3-Momentum Magnitude")
 plt.xlabel("Value")
