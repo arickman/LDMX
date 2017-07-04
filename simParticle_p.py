@@ -1,6 +1,7 @@
 #plot of simParticle momentum
 from __future__ import division
 
+import numpy as np
 import ROOT as r
 import argparse
 import copy
@@ -8,12 +9,12 @@ import os
 import math
 import matplotlib
 import matplotlib.pyplot as plt
+
 from ROOT import TFile,TTree,AddressOf,gROOT
 from ROOT import TCanvas
 from ROOT import TH1D
-from root_numpy import fill_hist
-import numpy as np
 from ROOT import TLegend
+from root_numpy import fill_hist
 
 from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.colors import LogNorm
