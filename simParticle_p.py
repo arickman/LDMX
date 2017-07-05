@@ -55,11 +55,11 @@ hist.Draw(" ")
 c1.Print("simParticle_p.pdf")
 
 #Python
-plt.hist(momentum)
-plt.title("3-Momentum Magnitude")
-plt.xlabel("Value")
-plt.ylabel("Frequency")
-plt.show()
+# plt.hist(momentum)
+# plt.title("3-Momentum Magnitude")
+# plt.xlabel("Value")
+# plt.ylabel("Frequency")
+# plt.show()
 
 
 
