@@ -19,7 +19,7 @@ from root_numpy import fill_hist
 from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.colors import LogNorm
 from numpy import linalg as la
-# from scipy.stats import norm
+from scipy.stats import norm
 
 # parser = argparse.ArgumentParser(description='')
 # parser.add_argument('-i', action='store', dest='rfile_path', 
