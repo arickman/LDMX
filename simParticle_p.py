@@ -14,7 +14,7 @@ from ROOT import TFile,TTree,AddressOf,gROOT
 from ROOT import TCanvas
 from ROOT import TH1D
 from ROOT import TLegend
-# from root_numpy import fill_hist
+from root_numpy import fill_hist
 
 # from matplotlib.backends.backend_pdf import PdfPages
 # from matplotlib.colors import LogNorm
