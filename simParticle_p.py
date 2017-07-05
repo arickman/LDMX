@@ -8,6 +8,7 @@ import copy
 import os
 import math
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 from ROOT import TFile,TTree,AddressOf,gROOT
@@ -60,9 +61,10 @@ hist.Draw()
 #Python
 plt.hist(momArray)
 plt.title("3-Momentum Magnitude")
-plt.xlabel("Value")
+plt.xlabel("Value (eV)")
 plt.ylabel("Frequency")
 plt.show()
+plt.savefig('simParticle_p.pdf')
 
 
 
