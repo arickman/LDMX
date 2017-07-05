@@ -7,16 +7,14 @@ import copy
 import os
 import math
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
 from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.colors import LogNorm
-from numpy import linalg as la
-from scipy.stats import norm
 
 def created_within_target(particle) :
-    #print "Vertex: %s" % particle.getVertex()[2]
     if abs(particle.getVertex()[2]) < 0.550 : return True 
     return False
 
@@ -54,7 +52,6 @@ for entry in xrange(0, tree.GetEntries()):
             energySum += sParticle.getEnergy()
         if is_recoil(sParticle) : 
             parent = sParticle
-
     #populate the vectors
     gammaEnergy = np.append(gammaEnergy, energySum) 
     threeMomentum = parent.getEndPointMomentum()
@@ -66,4 +63,5 @@ plt.title("Incident Electron Momentum vs Summed Energy from Bremmed Photon")
 plt.xlabel("Electron Momentum")
 plt.ylabel("Photon Energy")
 plt.show()
+plt.savefig('firstPlot.pdf')
 
