@@ -52,9 +52,8 @@ fill_hist(hist, momentum, None) #takes in weights as the 3rd arg
 c1 = TCanvas("c1")
 hist.SetTitle( "Momentum")
 hist.Draw()
-hist.Write()
 c1.Update()
-#c1.Print("simParticle_p.pdf")
+c1.Print("simParticle_p.pdf")
 
 #Python
 # plt.hist(momentum)
