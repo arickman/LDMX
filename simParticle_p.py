@@ -1,25 +1,25 @@
 #plot of simParticle momentum
 from __future__ import division
 
-import numpy as np
-import ROOT as r
-import argparse
-import copy
-import os
-import math
-import matplotlib
-import matplotlib.pyplot as plt
+# import numpy as np
+# import ROOT as r
+# import argparse
+# import copy
+# import os
+# import math
+# import matplotlib
+# import matplotlib.pyplot as plt
 
-from ROOT import TFile,TTree,AddressOf,gROOT
-from ROOT import TCanvas
-from ROOT import TH1D
-from ROOT import TLegend
-from root_numpy import fill_hist
+# from ROOT import TFile,TTree,AddressOf,gROOT
+# from ROOT import TCanvas
+# from ROOT import TH1D
+# from ROOT import TLegend
+# from root_numpy import fill_hist
 
-from matplotlib.backends.backend_pdf import PdfPages
-from matplotlib.colors import LogNorm
-from numpy import linalg as la
-from scipy.stats import norm
+# from matplotlib.backends.backend_pdf import PdfPages
+# from matplotlib.colors import LogNorm
+# from numpy import linalg as la
+# from scipy.stats import norm
 
 # parser = argparse.ArgumentParser(description='')
 # parser.add_argument('-i', action='store', dest='rfile_path', 
