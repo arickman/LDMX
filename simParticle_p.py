@@ -17,7 +17,7 @@ from ROOT import TLegend
 from root_numpy import fill_hist
 
 from matplotlib.backends.backend_pdf import PdfPages
-# from matplotlib.colors import LogNorm
+from matplotlib.colors import LogNorm
 # from numpy import linalg as la
 # from scipy.stats import norm
 
