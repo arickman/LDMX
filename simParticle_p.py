@@ -18,7 +18,7 @@ from root_numpy import fill_hist
 
 from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.colors import LogNorm
-# from numpy import linalg as la
+from numpy import linalg as la
 # from scipy.stats import norm
 
 # parser = argparse.ArgumentParser(description='')
@@ -43,7 +43,7 @@ from matplotlib.colors import LogNorm
 #     tree.GetEntry(entry)
 #     pSum = 0
 #     for sParticle in sParticles :
-#         pSum += np.linalg.norm(sParticle.getMomentum())
+#         pSum += np.la.norm(sParticle.getMomentum())
 #     momentum = np.append(momentum, pSum) #should be an array of all 4's
 
 # #Generate the plot
