@@ -42,19 +42,18 @@ for entry in xrange(0, tree.GetEntries()):
     pSum = 0
     for sParticle in sParticles :
         pSum += np.linalg.norm(sParticle.getMomentum())
-    print("hello")
-    print(pSum)
     momentum = np.append(momentum, pSum) #should be an array of all 4's
 
 #Generate the plot
 
 #ROOT
+#convert list to numpy array
+momArray = np.asarray(momentum)
 hist = TH1D('momHist', 'Momentum', 20, -150, 150)
-fill_hist(hist, momentum, None) #takes in weights as the 3rd arg
+fill_hist(hist, momArray)
 c1 = TCanvas("c1")
 hist.SetTitle( "Momentum")
 hist.Draw()
-c1.Update()
 c1.Print("simParticle_p.pdf")
 
 #Python
