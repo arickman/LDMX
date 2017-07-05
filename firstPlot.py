@@ -56,7 +56,7 @@ for entry in xrange(0, tree.GetEntries()):
     gammaEnergy = np.append(gammaEnergy, energySum)
     print("brem =", energySum) 
     threeMomentum = parent.getEndPointMomentum()
-    print("electron =", threeMomentum)
+    print("electron =", np.linalg.norm(threeMomentum))
     electronMomentum = np.append(electronMomentum, np.linalg.norm(threeMomentum))
 
 #Generate the plot
