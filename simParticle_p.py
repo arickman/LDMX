@@ -49,10 +49,9 @@ for entry in xrange(0, tree.GetEntries()):
 #ROOT
 #convert list to numpy array
 momArray = np.asarray(momentum)
-print(momArray)
+c1 = TCanvas("c1")
 hist = TH1D('momHist', 'Momentum', 20, -150, 150)
 fill_hist(hist, momArray)
-c1 = TCanvas("c1")
 hist.SetTitle( "Momentum")
 hist.Draw()
 c1.Print("simParticle_p.pdf")
