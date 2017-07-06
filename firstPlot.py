@@ -50,15 +50,13 @@ for entry in xrange(0, tree.GetEntries()):
     for sParticle in sParticles :
         if is_brem(sParticle) :
             energySum += sParticle.getEnergy()
-            #print("eSum = " + str(energySum))
         if is_recoil(sParticle) : 
             parent = sParticle
-    #populate the vectors
-    gammaEnergy = np.append(gammaEnergy, energySum)
-    print("brem =" + str(gammaEnergy)) 
-    threeMomentum = parent.getEndPointMomentum()
-    #print("electron =" +  str(np.linalg.norm(threeMomentum)))
-    electronMomentum = np.append(electronMomentum, np.linalg.norm(threeMomentum))
+    #populate the vectors if brem event
+    if (energySum != 0): #meaning there was a brem in the event
+        gammaEnergy = np.append(gammaEnergy, energySum)
+        threeMomentum = parent.getEndPointMomentum()
+        electronMomentum = np.append(electronMomentum, np.linalg.norm(threeMomentum))
 
 #Generate the plot
 plt.plot(electronMomentum, gammaEnergy, 'b--')
