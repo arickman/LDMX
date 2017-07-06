@@ -54,9 +54,9 @@ for entry in xrange(0, tree.GetEntries()):
             parent = sParticle
     #populate the vectors
     gammaEnergy = np.append(gammaEnergy, energySum)
-    print("brem =", energySum) 
+    print("brem =" + str(energySum)) 
     threeMomentum = parent.getEndPointMomentum()
-    print("electron =", np.linalg.norm(threeMomentum))
+    print("electron =" +  str(np.linalg.norm(threeMomentum)))
     electronMomentum = np.append(electronMomentum, np.linalg.norm(threeMomentum))
 
 #Generate the plot
