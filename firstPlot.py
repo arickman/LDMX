@@ -52,7 +52,7 @@ for entry in xrange(0, tree.GetEntries()):
             energySum += sParticle.getEnergy()
         if is_recoil(sParticle) : 
             parent = sParticle
-            print("parent energy = " + str(np.linalg.norm(parent.getEndPointMomentum())))
+            print("parent energy = " + str(np.linalg.norm(parent.getMomentum())))
     #populate the vectors if brem event
     if (energySum != 0): #meaning there was a brem in the event
         gammaEnergy = np.append(gammaEnergy, energySum)
