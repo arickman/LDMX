@@ -56,11 +56,19 @@ c1 = TCanvas("c1")
 hist = TH1D('momHist', 'Momentum', 20, 4000, 10000)
 fill_hist(hist, momArray)
 hist.SetTitle( "Total Momentum of Entry")
-hist.gStyle.SetHistFillColor(color = 1)
-hist.gStyle.SetHistFillStyle(styl = 0)
-hist.gStyle.SetHistLineColor(color = 1)
-hist.gStyle.SetHistLineStyle(styl = 0)
-hist.gStyle.SetHistLineWidth(width = 1)
+
+
+#change style
+#gStyle = TStyle()
+gStyle.SetHistFillColor(color = 1)
+gStyle.SetHistFillStyle(styl = 0)
+gStyle.SetHistLineColor(color = 1)
+gStyle.SetHistLineStyle(styl = 0)
+gStyle.SetHistLineWidth(width = 1)
+
+
+
+
 hist.Draw()
 c1.SaveAs("simParticle_ROOT_p.pdf")
 
