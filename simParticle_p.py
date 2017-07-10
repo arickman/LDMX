@@ -14,8 +14,8 @@ import matplotlib.pyplot as plt
 from ROOT import TFile,TTree,AddressOf,gROOT
 from ROOT import TCanvas
 from ROOT import TH1D
+from TH1D import TAttFill
 from ROOT import TLegend
-from ROOT import TStyle
 from root_numpy import fill_hist
 
 from matplotlib.backends.backend_pdf import PdfPages
@@ -59,12 +59,8 @@ hist.SetTitle( "Total Momentum of Entry")
 
 
 #change style
-t = TStyle()
-t.SetHistFillColor(4)
-t.SetHistFillStyle(2)
-t.SetHistLineColor(5)
-t.SetHistLineStyle(8)
-t.SetHistLineWidth(25)
+hist.SetFillColor(kRed)
+hist.SetFillStyle(3025)
 
 
 
