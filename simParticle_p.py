@@ -53,7 +53,7 @@ momArray = np.asarray(momentum)
 #ROOT
 c1 = TCanvas("c1")
 hist = TH1D('momHist', 'Momentum', 20, 4000, 10000)
-Fill_hist(hist, momArray)
+fill_hist(hist, momArray)
 hist.SetTitle( "Total Momentum of Entry")
 hist.Draw()
 c1.SaveAs("simParticle_ROOT_p.pdf")
