@@ -59,7 +59,8 @@ hist.SetTitle( "Total Momentum of Entry")
 
 
 #change style
-hist.SetFillColor(kRed)
+red = gROOT.getColor(2)
+hist.SetFillColor(red)
 hist.SetFillStyle(3025)
 
 
