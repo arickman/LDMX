@@ -18,7 +18,7 @@ def created_within_target(particle) :
     if abs(particle.getVertex()[2]) < 0.550 : return True 
     return False
 
-def is_recoil(particle) :
+def is_incident(particle) :
        return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)
 
 def is_brem(particle) :
@@ -50,7 +50,7 @@ for entry in xrange(0, tree.GetEntries()):
     for sParticle in sParticles :
         if is_brem(sParticle) :
             energySum += sParticle.getEnergy()
-        if is_recoil(sParticle) : 
+        if is_incident(sParticle) : 
             parent = sParticle
             print("parent energy = " + str(np.linalg.norm(parent.getEndPointMomentum())))
     #populate the vectors if brem event
