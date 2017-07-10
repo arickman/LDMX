@@ -60,11 +60,11 @@ hist.SetTitle( "Total Momentum of Entry")
 
 #change style
 t = TStyle()
-t.SetHistFillColor(color = 1)
-t.SetHistFillStyle(styl = 0)
-t.SetHistLineColor(color = 1)
-t.SetHistLineStyle(styl = 0)
-t.SetHistLineWidth(width = 1)
+t.SetHistFillColor(1)
+t.SetHistFillStyle(0)
+t.SetHistLineColor(1)
+t.SetHistLineStyle(0)
+t.SetHistLineWidth(1)
 
 
 
