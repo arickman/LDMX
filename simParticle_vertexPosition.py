@@ -42,7 +42,7 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     for sParticle in sParticles :
     	vPos = np.append(vPos, sParticle.getVertex()[2])
-    	if abs(sParticle.getVertex()[2]) < 100:
+    	if -100 < sParticle.getVertex()[2] < 0:
     		print("Particle Type: " + str(sParticle.getPdgID()))
     		print("Vertex Position: " + str(sParticle.getVertex()[2]))
 
