@@ -59,8 +59,8 @@ for entry in xrange(0, tree.GetEntries()):
 
     #from the incident e, find the PNGamma that interacted with a nucleus in the target
 #Don't fully understand how this proves that this gamma underwent a PN reaction????
-	PNGamma = None
-	for daughterCount in xrange(0, incidentElectron.getDaughterCount()):
+    PNGamma = None
+    for daughterCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(daughterCount)
         if daughter.getDaughterCount() == 0 : continue #continue skips the rest of the commands in this iteration of the loop
         if (daughter.getPdgID() == 22 and created_within_target(daughter) and created_within_target(daughter.getDaughter(0))):
