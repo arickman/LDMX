@@ -47,10 +47,10 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 PNGammaEnergy = []
 counter = 0
 for entry in xrange(0, tree.GetEntries()):
-    tree.GetEntry(entry)
+	tree.GetEntry(entry)
 
  	#find the incident electron
- 	counter += 1
+	counter += 1
     incidentElectron = None
     for sParticle in sParticles :
     	if sParticle.getPdgID() == 11: continue
