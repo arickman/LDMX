@@ -41,11 +41,13 @@ vPos = []
 eCounter = 0
 gCounter = 0
 posCounter = 0
+counter = 0
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     for sParticle in sParticles :
     	vPos = np.append(vPos, sParticle.getVertex()[2])
-    	if -150 < sParticle.getVertex()[2] < 0:
+    	if -100 < sParticle.getVertex()[2] < 0:
+    		counter += 1
     		if sParticle.getPdgID() == 11: eCounter += 1
     		if sParticle.getPdgID() == 22: gCounter += 1
     		if sParticle.getPdgID() == -11: posCounter += 1
@@ -54,6 +56,7 @@ for entry in xrange(0, tree.GetEntries()):
 print("Electron Count: " + str(eCounter))
 print("Gamma Count: " + str(gCounter))
 print("Positron Count: " + str(posCounter))
+print("Total Particles: " + str(counter))
 #Generate the plot
 
 #Python
