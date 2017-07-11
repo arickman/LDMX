@@ -54,7 +54,7 @@ momArray = np.asarray(momentum)
 
 #ROOT
 c1 = TCanvas("c1")
-hist = TH1D('momHist', 'Momentum', 20, 4000, 10000)
+hist = TH1D('momHist', 'Momentum', 20, 1000, 10000)
 fill_hist(hist, momArray)
 hist.SetTitle( "Total Momentum of Entry")
 
