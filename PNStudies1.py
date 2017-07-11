@@ -51,7 +51,7 @@ for entry in xrange(0, tree.GetEntries()):
 
  	#find the incident electron
 	counter += 1
-    incidentElectron = None
+	incidentElectron = None
     for sParticle in sParticles :
     	if sParticle.getPdgID() == 11: continue
     	if is_incident(sParticle) :
