@@ -46,16 +46,12 @@ sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 PNGammaEnergy = []
-counter = 0
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
-
     #find the incident electron
-    counter += 1
-    print(str(counter))
     incidentElectron = None
     for sParticle in sParticles :
-        if sParticle.getPdgID() == 11: continue
+        if sParticle.getPdgID() != 11: continue
         if is_incident(sParticle) :
             incidentElectron = sParticle
             print("Found it!, entry number: " + str(counter))
