@@ -41,10 +41,11 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 momentum = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
-    pSum = 0
+    #pSum = 0
     for sParticle in sParticles :
-        pSum += np.linalg.norm(sParticle.getMomentum())
-    momentum = np.append(momentum, pSum) #should be an array of all 4's
+    	momentum = np.append(momentum, np.linalg.norm(sParticle.getMomentum()))
+        #pSum += np.linalg.norm(sParticle.getMomentum())
+    #momentum = np.append(momentum, pSum) #should be an array of all 4's
 
 #convert list to numpy array
 momArray = np.asarray(momentum)
@@ -72,7 +73,7 @@ plt.title("3-Momentum Magnitude")
 plt.xlabel("Value (eV)")
 plt.ylabel("Frequency")
 plt.show()
-plt.savefig('simParticle_p.pdf')
+plt.savefig('simParticle_p2.pdf')
 
 
 
