@@ -43,7 +43,7 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #pSum = 0
     for sParticle in sParticles :
-    	if sParticle.getPdgID() == 11 :
+    	if sParticle.getPdgID() == 22 :
     		momentum = np.append(momentum, np.linalg.norm(sParticle.getMomentum()))
         #pSum += np.linalg.norm(sParticle.getMomentum())
     #momentum = np.append(momentum, pSum) #should be an array of all 4's
@@ -57,7 +57,7 @@ momArray = np.asarray(momentum)
 c1 = TCanvas("c1")
 hist = TH1D('momHist', 'Momentum', 20, 0, 5000)
 fill_hist(hist, momArray)
-hist.SetTitle( "Momentum of Electrons")
+hist.SetTitle( "Momentum of Photons")
 
 
 #change style
@@ -66,7 +66,7 @@ hist.SetFillStyle(3025)
 
 
 hist.Draw()
-c1.SaveAs("simParticle_ROOT_p3.pdf")
+c1.SaveAs("simParticle_ROOT_p4.pdf")
 
 #Python
 # plt.hist(momArray)
