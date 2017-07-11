@@ -45,45 +45,47 @@ sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 PNGammaEnergy = []
+counter = 0
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
 
  	#find the incident electron
+ 	counter += 1
     incidentElectron = None
     for sParticle in sParticles :
     	if sParticle.getPdgID() == 11: continue
-    	if is_incident(sParticle):
+    	if is_incident(sParticle) :
     		incidentElectron = sParticle
+    		print("Found it, entry number: " + str(counter))
     		break
 
     #from the incident e, find the PNGamma that interacted with a nucleus in the target
 #Don't understand how this proves that this gamma underwent a PN reaction????
-    PNGamma = None
-    for daughterCount in xrange(0, incidentElectron.getDaughterCount()):
-    	daughter = incidentElectron.getDaughter(daughterCount)
-    	if daughter.getDaughterCount() == 0 : continue
-    	if (daughter.getPdgID() == 22 and created_within_target(daughter) and created_within_target(daughter.getDaughter(0))):
-    		PNGamma = daughter
-    		break
-    PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
-
+    # PNGamma = None
+    # for daughterCount in xrange(0, incidentElectron.getDaughterCount()):
+    # 	daughter = incidentElectron.getDaughter(daughterCount)
+    # 	if daughter.getDaughterCount() == 0 : continue
+    # 	if (daughter.getPdgID() == 22 and created_within_target(daughter) and created_within_target(daughter.getDaughter(0))):
+    # 		PNGamma = daughter
+    # 		break
+    # PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
 
 #Histogram of PN gamma energy
 
 #ROOT
-c1 = TCanvas("c1")
-hist = TH1D('PNgammaEHist', 'PNGammaE', 20, 0, 5000)
-fill_hist(hist, PNGammaEnergy)
-hist.SetTitle( "PN Gamma Energy")
+# c1 = TCanvas("c1")
+# hist = TH1D('PNgammaEHist', 'PNGammaE', 20, 0, 5000)
+# fill_hist(hist, PNGammaEnergy)
+# hist.SetTitle( "PN Gamma Energy")
 
 
 #change style
-hist.SetFillColor(8)
-hist.SetFillStyle(3025)
+# hist.SetFillColor(8)
+# hist.SetFillStyle(3025)
 
 
-hist.Draw()
-c1.SaveAs("PNGammaEnergy.pdf")
+# hist.Draw()
+# c1.SaveAs("PNGammaEnergy.pdf")
 
 
 
