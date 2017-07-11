@@ -80,7 +80,7 @@ hist.SetTitle( "PN Gamma Energy")
 hist.SetFillColor(8)
 hist.SetFillStyle(3025)
 hist.Draw()
-c1.SaveAs("PNGammaEnergyTest.pdf")
+c1.SaveAs("PNGammaEnergy.pdf")
 
 #Multiplicity plot
 c1.Clear()
