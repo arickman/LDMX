@@ -40,6 +40,7 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 vPos = []
 eCounter = 0
 gCounter = 0
+posCounter = 0
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     for sParticle in sParticles :
@@ -47,10 +48,12 @@ for entry in xrange(0, tree.GetEntries()):
     	if -100 < sParticle.getVertex()[2] < 0:
     		if sParticle.getPdgID() == 11: eCounter += 1
     		if sParticle.getPdgID() == 22: gCounter += 1
+    		if sParticle.getPdgID() == -11: posCounter += 1
     		#print("Particle Type: " + str(sParticle.getPdgID()))
     		#print("Vertex Position: " + str(sParticle.getVertex()[2]))
 print("Electron Count: " + str(eCounter))
 print("Gamma Count: " + str(gCounter))
+print("Positron Count: " + str(posCounter))
 #Generate the plot
 
 #Python
