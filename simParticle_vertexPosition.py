@@ -42,7 +42,9 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     for sParticle in sParticles :
     	vPos = np.append(vPos, sParticle.getVertex()[2])
-
+    	print("Particle Type: " + str(sParticle.getPdgID()))
+    	print("Vertex Position: " + str(sParticle.getVertex()[2]))
+    	
 #Generate the plot
 
 #Python
