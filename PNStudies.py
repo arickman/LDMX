@@ -84,7 +84,7 @@ c1.SaveAs("PNGammaEnergy.pdf")
 
 #Multiplicity plot
 c1.Clear()
-hist2 = TH1D('Mult', 'Multiplicity', 1, 0, 500)
+hist2 = TH1D('Mult', 'Multiplicity', 100, 0, 500)
 fill_hist(hist2, multiplicity)
 hist2.SetTitle("PN Multiplicity")
 hist2.SetFillColor(9)
