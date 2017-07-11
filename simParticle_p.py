@@ -43,7 +43,8 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #pSum = 0
     for sParticle in sParticles :
-    	momentum = np.append(momentum, np.linalg.norm(sParticle.getMomentum()))
+    	if sParticle.getPdgID() == 11
+    		momentum = np.append(momentum, np.linalg.norm(sParticle.getMomentum()))
         #pSum += np.linalg.norm(sParticle.getMomentum())
     #momentum = np.append(momentum, pSum) #should be an array of all 4's
 
@@ -56,24 +57,24 @@ momArray = np.asarray(momentum)
 c1 = TCanvas("c1")
 hist = TH1D('momHist', 'Momentum', 20, 0, 5000)
 fill_hist(hist, momArray)
-hist.SetTitle( "Total Momentum of Entry")
+hist.SetTitle( "Momentum of Electrons")
 
 
 #change style
-hist.SetFillColor(2)
+hist.SetFillColor(4)
 hist.SetFillStyle(3025)
 
 
 hist.Draw()
-c1.SaveAs("simParticle_ROOT_p2.pdf")
+c1.SaveAs("simParticle_ROOT_p3.pdf")
 
 #Python
-plt.hist(momArray)
-plt.title("3-Momentum Magnitude")
-plt.xlabel("Value (eV)")
-plt.ylabel("Frequency")
-plt.show()
-plt.savefig('simParticle_p2.pdf')
+# plt.hist(momArray)
+# plt.title("3-Momentum Magnitude")
+# plt.xlabel("Value (eV)")
+# plt.ylabel("Frequency")
+# plt.show()
+# plt.savefig('simParticle_p.pdf')
 
 
 
