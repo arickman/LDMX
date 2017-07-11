@@ -43,7 +43,7 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #pSum = 0
     for sParticle in sParticles :
-    	if sParticle.getPdgID() != 11, 22, -11 :
+    	if sParticle.getPdgID() != 11 and  sParticle.getPdgID() != 22 and  sParticle.getPdgID() != -11 :
     		momentum = np.append(momentum, np.linalg.norm(sParticle.getMomentum()))
         #pSum += np.linalg.norm(sParticle.getMomentum())
     #momentum = np.append(momentum, pSum) #should be an array of all 4's
