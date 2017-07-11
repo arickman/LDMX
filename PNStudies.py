@@ -46,6 +46,7 @@ sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 PNGammaEnergy = []
+multiplicity = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -66,7 +67,7 @@ for entry in xrange(0, tree.GetEntries()):
             PNGamma = daughter
             break
     PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
-  
+    multiplicity = np.append(multiplicity, PNGamma.getDaughterCount())
 
 #Histogram of PN gamma energy
 
@@ -75,16 +76,21 @@ c1 = TCanvas("c1")
 hist = TH1D('PNgammaEHist', 'PNGammaE', 20, 0, 5000)
 fill_hist(hist, PNGammaEnergy)
 hist.SetTitle( "PN Gamma Energy")
-
-
 #change style
 hist.SetFillColor(8)
 hist.SetFillStyle(3025)
-
-
 hist.Draw()
-c1.SaveAs("PNGammaEnergy.pdf")
+c1.SaveAs("PNGammaEnergyTest.pdf")
 
+#Multiplicity plot
+c1.Clear()
+hist2 = TH1D('Mult', 'Multiplicity', 1, 0, 500)
+fill_hist(hist2, multiplicity)
+hist2.SetTitle("PN Multiplicity")
+hist2.SetFillColor(9)
+hist2.SetFillStyle(3025)
+hist2.Draw()
+c1.SaveAs("multiplicity.pdf")
 
 
 
