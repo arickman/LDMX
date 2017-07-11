@@ -57,31 +57,38 @@ for entry in xrange(0, tree.GetEntries()):
             print("Found it!")
             break
 
-
     #from the incident e, find the PNGamma that interacted with a nucleus in the target
-#Don't understand how this proves that this gamma underwent a PN reaction????
-    # PNGamma = None
-    # for daughterCount in xrange(0, incidentElectron.getDaughterCount()):
-    # 	daughter = incidentElectron.getDaughter(daughterCount)
-    # 	if daughter.getDaughterCount() == 0 : continue
-    # 	if (daughter.getPdgID() == 22 and created_within_target(daughter) and created_within_target(daughter.getDaughter(0))):
-    # 		PNGamma = daughter
-    # 		break
-    # PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
+#Don't fully understand how this proves that this gamma underwent a PN reaction????
+	PNGamma = None
+	for daughterCount in xrange(0, incidentElectron.getDaughterCount()):
+        daughter = incidentElectron.getDaughter(daughterCount)
+        if daughter.getDaughterCount() == 0 : continue #continue skips the rest of the commands in this iteration of the loop
+        if (daughter.getPdgID() == 22 and created_within_target(daughter) and created_within_target(daughter.getDaughter(0))):
+            PNGamma = daughter
+            break
+    PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
+  
 
 #Histogram of PN gamma energy
 
 #ROOT
-# c1 = TCanvas("c1")
-# hist = TH1D('PNgammaEHist', 'PNGammaE', 20, 0, 5000)
-# fill_hist(hist, PNGammaEnergy)
-# hist.SetTitle( "PN Gamma Energy")
+c1 = TCanvas("c1")
+hist = TH1D('PNgammaEHist', 'PNGammaE', 20, 0, 5000)
+fill_hist(hist, PNGammaEnergy)
+hist.SetTitle( "PN Gamma Energy")
 
 
 #change style
-# hist.SetFillColor(8)
-# hist.SetFillStyle(3025)
+hist.SetFillColor(8)
+hist.SetFillStyle(3025)
 
 
-# hist.Draw()
-# c1.SaveAs("PNGammaEnergy.pdf")
+hist.Draw()
+c1.SaveAs("PNGammaEnergy.pdf")
+
+
+
+
+
+
+
