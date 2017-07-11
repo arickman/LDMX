@@ -46,7 +46,7 @@ for entry in xrange(0, tree.GetEntries()):
     	vPos = np.append(vPos, sParticle.getVertex()[2])
     	if -100 < sParticle.getVertex()[2] < 0:
     		if sParticle.getPdgID() == 11: eCounter += 1
-    		if sPartcile.getPdgID() == 22: gCounter += 1
+    		if sParticle.getPdgID() == 22: gCounter += 1
     		#print("Particle Type: " + str(sParticle.getPdgID()))
     		#print("Vertex Position: " + str(sParticle.getVertex()[2]))
 print("Electron Count: " + str(eCounter))
