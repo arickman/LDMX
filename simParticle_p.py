@@ -61,7 +61,7 @@ hist.SetTitle( "Momentum of Photons")
 
 
 #change style
-hist.SetFillColor(4)
+hist.SetFillColor(5)
 hist.SetFillStyle(3025)
 
 
