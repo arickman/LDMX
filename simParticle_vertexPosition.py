@@ -82,10 +82,9 @@ plt.show()
 plt.savefig('simParticle_vPos.pdf')
 
 #ROOT
-r.gStyle.SetOptStat(0)
 c1 = TCanvas("c1")
 c1.SetLogy()
-r.gStyle->SetOptStat(0)
+r.gStyle.SetOptStat(0)
 myLegend = TLegend(1,10,0.48,0.9)
 hist = TH1D('Electron Energy', 'Electron Energy', 100, 0, 5000)
 fill_hist(hist, eVec)
