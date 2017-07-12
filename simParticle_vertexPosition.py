@@ -52,21 +52,21 @@ gammaVec = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     for sParticle in sParticles :
-    	vPos = np.append(vPos, sParticle.getVertex()[2])
-    	#if -100 < sParticle.getVertex()[2] < 50:
-            if created_within_target(sParticle) :
-    		counter += 1
-    		if sParticle.getPdgID() == 11: 
-                            eCounter += 1
-                            eVec = np.append(eVec, sParticle.getEnergy())
-    		if sParticle.getPdgID() == 22: 
-                            gCounter += 1
-                            gammaVec = np.append(gammaVec, sParticle.getEnergy())
-    		if sParticle.getPdgID() == -11: 
-                            posCounter += 1
-                            posVec = np.append(posVec, sParticle.getEnergy())
-    		#print("Particle Type: " + str(sParticle.getPdgID()))
-    		#print("Vertex Position: " + str(sParticle.getVertex()[2]))
+        vPos = np.append(vPos, sParticle.getVertex()[2])
+        #if -100 < sParticle.getVertex()[2] < 50:
+        if created_within_target(sParticle) :
+            counter += 1
+    	if sParticle.getPdgID() == 11: 
+                eCounter += 1
+                eVec = np.append(eVec, sParticle.getEnergy())
+            if sParticle.getPdgID() == 22: 
+                gCounter += 1
+                gammaVec = np.append(gammaVec, sParticle.getEnergy())
+            if sParticle.getPdgID() == -11: 
+                posCounter += 1
+                posVec = np.append(posVec, sParticle.getEnergy())
+    	#print("Particle Type: " + str(sParticle.getPdgID()))
+    	#print("Vertex Position: " + str(sParticle.getVertex()[2]))
 print("Electron Count: " + str(eCounter))
 print("Gamma Count: " + str(gCounter))
 print("Positron Count: " + str(posCounter))
