@@ -107,9 +107,9 @@ for entry in xrange(0, tree.GetEntries()):
 
     #Append the arrays to plot now that we found the hh and hp
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
-    hardestHadronThetaVec =np.append(hardestHadronThetaVec, np.arccos(hardestHadronTheta))
+    hardestHadronThetaVec =np.append(hardestHadronThetaVec, 57.295779513 * np.arccos(hardestHadronTheta))
     hardestPionEVec = np.append(hardestPionEVec, hardestPionE)
-    hardestPionThetaVec = np.append(hardestPionThetaVec, np.arccos(hardestPionTheta))
+    hardestPionThetaVec = np.append(hardestPionThetaVec, 57.295779513 * np.arccos(hardestPionTheta))
 
 #Histograms
 
