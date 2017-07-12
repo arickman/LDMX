@@ -25,7 +25,7 @@ def created_within_target(particle) :
     return False
 
 def is_incident(particle) :
-    return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)parser = argparse.ArgumentParser(description='')
+    return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)
 
 def not_hadron(particle) : #ASSUMPTION: only non-hadrons produced are electrons, positrons and gammas
     if particle.getPdgID() == -11 or particle.getPdgID() == 11 or particle.getPdgID() == 22 :
@@ -35,6 +35,7 @@ def is_pion(particle) :
     if particle.getPdgID() == -211 or particle.getPdgID() == 111 or particle.getPdgID() == 211 :
         return True
 
+parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
                     help='ROOT file to processed.')
 args = parser.parse_args()
