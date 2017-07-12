@@ -99,12 +99,18 @@ for entry in xrange(0, tree.GetEntries()):
                 hardestHadron = daughter
                 hardHadronMom = hardestHadron.getEndPointMomentum()[2] 
 
-    hardestPionTheta = hardestPion.getEndPointMomentum()[2]/(np.linalg.norm(hardestPion.getEndPointMomentum()))
+    #ASSUMPTION: There is always at least 1 hadron per PN event
     hardestHadronTheta = hardestHadron.getEndPointMomentum()[2]/(np.linalg.norm(hardestHadron.getEndPointMomentum()))
+    if hardestPion: 
+        hardestPionTheta = hardestPion.getEndPointMomentum()[2]/(np.linalg.norm(hardestPion.getEndPointMomentum()))
+        hardestPionE = hardestPion.getEnergy()
+    else :
+        hardestPionTheta = 0
+        hardestPionE = 0
     #Append the arrays to plot now that we found the hh and hp
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadron.getEnergy())
     hardestHadronThetaVec =np.append(hardestHadronThetaVec, 57.295779513 * np.arccos(hardestHadronTheta))
-    hardestPionEVec = np.append(hardestPionEVec, hardestPion.getEnergy())
+    hardestPionEVec = np.append(hardestPionEVec, hardestPionE)
     hardestPionThetaVec = np.append(hardestPionThetaVec, 57.295779513 * np.arccos(hardestPionTheta))
 
 #Histograms
