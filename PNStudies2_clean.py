@@ -85,6 +85,8 @@ for entry in xrange(0, tree.GetEntries()):
         daughter = PNGamma.getDaughter(dCount)
         if not_hadron(daughter): continue
         #Now we are dealing with a hadron, let's determine if it's a pion
+        if not hardestPion and is_pion(daughter) : hardestPion = daughter
+        if not hardestHadron : hardestHadron = daughter
         if is_pion(daughter) :
             if daughter.getEndPointMomentum()[2] >  hardestPion.getEndPointMomentum()[2]: 
                 hardestPion = daughter
