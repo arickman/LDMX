@@ -64,7 +64,7 @@ for entry in xrange(0, tree.GetEntries()):
                 gammaVec = np.append(gammaVec, sParticle.getEnergy())
             if sParticle.getPdgID() == -11: 
                 posCounter += 1
-                 posVec = np.append(posVec, sParticle.getEnergy())
+                posVec = np.append(posVec, sParticle.getEnergy())
     	#print("Particle Type: " + str(sParticle.getPdgID()))
     	#print("Vertex Position: " + str(sParticle.getVertex()[2]))
 print("Electron Count: " + str(eCounter))
