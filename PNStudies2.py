@@ -79,8 +79,8 @@ for entry in xrange(0, tree.GetEntries()):
     
     #Now we have the PNGamma, let's loop through its daughters and find the hardest pion and hadron
     #ASSUMPTION: Hard is defined as having the greatest pz
-    hardestPion = 0
-    hardestHadron = 0
+    hardestPionMom = 0
+    hardestHadronMom = 0
     hardestPionE = 0
     hardestHadronE = 0
     hardestPionTheta = 0
@@ -91,16 +91,16 @@ for entry in xrange(0, tree.GetEntries()):
         #Now we are dealing with a hadron, let's determine if it's a pion
         #Probably cleaner to find the hardestPion and Hadron and then get their energy and theta a single time at the end
         if is_pion(daughter) :
-            if daughter.getEndPointMomentum()[2] >  hardestPion : 
+            if daughter.getEndPointMomentum()[2] >  hardestPionMom : 
                 hardestPion = daughter.getEndPointMomentum()[2] 
                 hardestPionE = daughter.getEnergy()
                 hardestPionTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
-            if daughter.getEndPointMomentum()[2] >  hardestHadron : 
+            if daughter.getEndPointMomentum()[2] >  hardestHadronMom : 
                 hardestHadron = daughter.getEndPointMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
                 hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
         #Other Hadron
-        elif daughter.getEndPointMomentum()[2] >  hardestHadron : 
+        elif daughter.getEndPointMomentum()[2] >  hardestHadronMom : 
                 hardestHadron = daughter.getEndPointMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
                 hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
