@@ -54,7 +54,7 @@ for entry in xrange(0, tree.GetEntries()):
     for sParticle in sParticles :
         vPos = np.append(vPos, sParticle.getVertex()[2])
         #if -100 < sParticle.getVertex()[2] < 50:
-         if created_within_target(sParticle) :
+        if created_within_target(sParticle) :
             counter += 1
             if sParticle.getPdgID() == 11: 
                 eCounter += 1
