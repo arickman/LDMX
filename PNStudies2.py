@@ -106,12 +106,10 @@ for entry in xrange(0, tree.GetEntries()):
                 hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
 
     #Append the arrays to plot now that we found the hh and hp
-    print(str(hardestHadronTheta))
-    print(str(hardestPionTheta))
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
-    hardestHadronThetaVec =np.append(hardestHadronThetaVec, hardestHadronTheta)
+    hardestHadronThetaVec =np.append(hardestHadronThetaVec, np.arccos(hardestHadronTheta))
     hardestPionEVec = np.append(hardestPionEVec, hardestPionE)
-    hardestPionThetaVec = np.append(hardestPionThetaVec, hardestPionTheta)
+    hardestPionThetaVec = np.append(hardestPionThetaVec, np.arccos(hardestPionTheta))
 
 #Histograms
 
