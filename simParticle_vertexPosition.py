@@ -89,20 +89,17 @@ fill_hist(hist, eVec)
 hist.SetTitle( "Energy of particles produced at Target")
 hist.SetLineColor(1)
 hist.Draw()
-c1.Update()
 
 hist2 = TH1D('Positron Energy', 'Positron Energy', 20, 0, 5000)
 fill_hist(hist2, posVec)
 hist2.SetLineColor(2)
-hist2.Draw("SAME")
-c1.Update()
+hist2.Draw("same")
 
 c1 = TCanvas("c1")
 hist3 = TH1D('Gamma Energy', 'Gamma Energy', 20, 0, 5000)
 fill_hist(hist3, gammaVec)
 hist3.SetLineColor(3)
-hist3.Draw("SAME")
-c1.Update()
+hist3.Draw("same")
 c1.SaveAs("energiesAtTarget.pdf")
 
 
