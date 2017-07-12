@@ -83,22 +83,30 @@ plt.savefig('simParticle_vPos.pdf')
 
 #ROOT
 c1 = TCanvas("c1")
+c1.setLogy()
+c1.cd()
+c1.Update()
 hist = TH1D('Electron Energy', 'Electron Energy', 20, 0, 5000)
 fill_hist(hist, eVec)
 hist.SetTitle( "Energy of electron produced at Target")
+hist.setLineColor(1)
 hist.Draw()
+c1.Update()
 
-c1 = TCanvas("c1")
 hist2 = TH1D('Positron Energy', 'Positron Energy', 20, 0, 5000)
 fill_hist(hist2, posVec)
 hist2.SetTitle( "Energy of positron produced at Target")
+hist2.setLineColor(2)
 hist2.Draw()
+c1.Update()
 
 c1 = TCanvas("c1")
 hist3 = TH1D('Gamma Energy', 'Gamma Energy', 20, 0, 5000)
 fill_hist(hist3, gammaVec)
 hist3.SetTitle( "Energy of gamma produced at Target")
+hist3.setLineColor(3)
 hist3.Draw()
+c1.Update()
 c1.SaveAs("energiesAtTarget.pdf")
 
 
