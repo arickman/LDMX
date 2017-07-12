@@ -81,28 +81,23 @@ for entry in xrange(0, tree.GetEntries()):
     #ASSUMPTION: Hard is defined as having the greatest pz
     hardestPion = None
     hardestHadron = None
-    #Initialize the particles to a random pion, assuming there is always a pion event
-    for i in xrange(0, PNGamma.getDaughterCount()):
-        daughter = PNGamma.getDaughter(i)
-        if not_hadron(daughter): continue
-        if is_pion(daughter) :
-            hardestPion = daughter 
-            hardestHadron = daughter
-            break
-
-
+    hardPionMom = 0
+    hardHardronMom = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
         if not_hadron(daughter): continue
         #Now we are dealing with a hadron, let's determine if it's a pion
         if is_pion(daughter) :
-            if daughter.getEndPointMomentum()[2] >  hardestPion.getEndPointMomentum()[2]: 
+            if daughter.getEndPointMomentum()[2] >  hardPionMom: 
                 hardestPion = daughter
-            if daughter.getEndPointMomentum()[2] >  hardestHadron.getEndPointMomentum()[2]  : 
+                hardPionMom = hardestPion.getEndPointMomentum()[2]
+            if daughter.getEndPointMomentum()[2] >  hardHardronMom : 
                 hardestHadron = daughter
+                hardHadronMom = hardestHadron.getEndPointMomentum()[2] 
         #Other Hadron
-        elif daughter.getEndPointMomentum()[2] >  hardestHadron.getEndPointMomentum()[2]  : 
+        elif daughter.getEndPointMomentum()[2] >  hardHardronMom : 
                 hardestHadron = daughter
+                hardHadronMom = hardestHadron.getEndPointMomentum()[2] 
 
     hardestPionTheta = hardestPion.getEndPointMomentum()[2]/(np.linalg.norm(hardestPion.getEndPointMomentum()))
     hardestHadronTheta = hardestHadron.getEndPointMomentum()[2]/(np.linalg.norm(hardestHadron.getEndPointMomentum()))
