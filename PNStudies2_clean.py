@@ -83,10 +83,6 @@ for entry in xrange(0, tree.GetEntries()):
     hardestHadron = None
     hardPionMom = 0
     hardHardronMom = 0
-    hardestHadronTheta = 0
-    hardestHadronE  = 0
-    hardestPionTheta = 0
-    hardestPionE = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
         if not_hadron(daughter): continue
@@ -104,10 +100,16 @@ for entry in xrange(0, tree.GetEntries()):
                 hardHadronMom = hardestHadron.getEndPointMomentum()[2] 
 
     #Handle edge cases where no hadrons (or just no pions) are produced
-    if not hardestHadron is None:
+    if hardestHadron is None:
+        hardestHadronTheta = 0
+        hardestHadronE  = 0
+    else:
         hardestHadronTheta = hardestHadron.getEndPointMomentum()[2]/(np.linalg.norm(hardestHadron.getEndPointMomentum()))
         hardestHadronE = hardestHadron.getEnergy()
-    if not hardestPion is None: 
+    if hardestPion is None: 
+        hardestPionTheta = 0
+        hardestPionE = 0
+    else:
         hardestPionTheta = hardestPion.getEndPointMomentum()[2]/(np.linalg.norm(hardestPion.getEndPointMomentum()))
         hardestPionE = hardestPion.getEnergy()
     #Append the arrays to plot now that we found the hh and hp
