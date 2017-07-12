@@ -82,7 +82,7 @@ plt.show()
 plt.savefig('simParticle_vPos.pdf')
 
 #ROOT
-r.gStyle->SetOptStat(0)
+r.gStyle.SetOptStat(0)
 c1 = TCanvas("c1")
 c1.SetLogy()
 r.gStyle->SetOptStat(0)
