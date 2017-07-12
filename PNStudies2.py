@@ -91,19 +91,19 @@ for entry in xrange(0, tree.GetEntries()):
         #Now we are dealing with a hadron, let's determine if it's a pion
         #Probably cleaner to find the hardestPion and Hadron and then get their energy and theta a single time at the end
         if is_pion(daughter) :
-            if daughter.getEndpointMomentum()[2] >  hardestPion : 
-                hardestPion = daughter.getEndpointMomentum()[2] 
+            if daughter.getEndPointMomentum()[2] >  hardestPion : 
+                hardestPion = daughter.getEndPointMomentum()[2] 
                 hardestPionE = daughter.getEnergy()
-                hardestPionTheta = daughter.getEndpointMomentum()[2]/(np.linalg.norm(daughter.getEndpointMomentum()))
-            if daughter.getEndpointMomentum()[2] >  hardestHadron : 
-                hardestHadron = daughter.getEndpointMomentum()[2] 
+                hardestPionTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
+            if daughter.getEndPointMomentum()[2] >  hardestHadron : 
+                hardestHadron = daughter.getEndPointMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
-                hardestHadronTheta = daughter.getEndpointMomentum()[2]/(np.linalg.norm(daughter.getEndpointMomentum()))
+                hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
         #Other Hadron
-        elif daughter.getEndpointMomentum()[2] >  hardestHadron : 
-                hardestHadron = daughter.getEndpointMomentum()[2] 
+        felif daughter.getEndPointMomentum()[2] >  hardestHadron : 
+                hardestHadron = daughter.getEndPointMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
-                hardestHadronTheta = daughter.getEndpointMomentum()[2]/(np.linalg.norm(daughter.getEndpointMomentum()))
+                hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
 
     #Append the arrays to plot now that we found the hh and hp
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
