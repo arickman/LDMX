@@ -81,14 +81,15 @@ for entry in xrange(0, tree.GetEntries()):
     #ASSUMPTION: Hard is defined as having the greatest pz
     hardestPion = None
     hardestHadron = None
-    #Initialize the particles
+    #Initialize the particles to a random pion, assuming there is always a pion event
     for i in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(i)
+        if not_hadron(daughter): continue
         if is_pion(daughter) :
             hardestPion = daughter 
-            if not hardestHadron : hardestHadron = daughter
+            hardestHadron = daughter
             break
-        else hardestHadron = daughter
+
 
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
