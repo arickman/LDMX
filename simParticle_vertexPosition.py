@@ -82,10 +82,11 @@ plt.show()
 plt.savefig('simParticle_vPos.pdf')
 
 #ROOT
+r.gStyle->SetOptStat(0)
 c1 = TCanvas("c1")
 c1.SetLogy()
-myLegend = TLegend(0.1,0.7,0.48,0.9)
-myLegend.SetHeader("Particle Type")
+r.gStyle->SetOptStat(0)
+myLegend = TLegend(1,10,0.48,0.9)
 hist = TH1D('Electron Energy', 'Electron Energy', 100, 0, 5000)
 fill_hist(hist, eVec)
 hist.SetTitle( "Energy of particles produced at Target")
