@@ -92,16 +92,16 @@ for entry in xrange(0, tree.GetEntries()):
         #Probably cleaner to find the hardestPion and Hadron and then get their energy and theta a single time at the end
         if is_pion(daughter) :
             if daughter.getEndPointMomentum()[2] >  hardestPionMom : 
-                hardestPion = daughter.getEndPointMomentum()[2] 
+                hardestPionMom = daughter.getEndPointMomentum()[2] 
                 hardestPionE = daughter.getEnergy()
                 hardestPionTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
             if daughter.getEndPointMomentum()[2] >  hardestHadronMom : 
-                hardestHadron = daughter.getEndPointMomentum()[2] 
+                hardestHadronMom = daughter.getEndPointMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
                 hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
         #Other Hadron
         elif daughter.getEndPointMomentum()[2] >  hardestHadronMom : 
-                hardestHadron = daughter.getEndPointMomentum()[2] 
+                hardestHadronMom = daughter.getEndPointMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
                 hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
 
