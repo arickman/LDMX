@@ -100,7 +100,7 @@ for entry in xrange(0, tree.GetEntries()):
                 hardestHadronE = daughter.getEnergy()
                 hardestHadronTheta = daughter.getEndpointMomentum()[2]/(np.linalg.norm(daughter.getEndpointMomentum()))
         #Other Hadron
-        else if daughter.getEndpointMomentum()[2] >  hardestHadron : 
+        elif daughter.getEndpointMomentum()[2] >  hardestHadron : 
                 hardestHadron = daughter.getEndpointMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
                 hardestHadronTheta = daughter.getEndpointMomentum()[2]/(np.linalg.norm(daughter.getEndpointMomentum()))
