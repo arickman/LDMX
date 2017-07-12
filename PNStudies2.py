@@ -119,7 +119,7 @@ hist = TH1D('hhE', 'hhE', 20, 0, 5000)
 fill_hist(hist, hardestHadronEVec)
 hist.SetTitle( "Hardest Hadron Kinetic Energy")
 #change style
-hist.SetFillColor(9)
+hist.SetFillColor(13)
 hist.SetFillStyle(3025)
 hist.Draw()
 c1.SaveAs("HardestHadronE.pdf")
