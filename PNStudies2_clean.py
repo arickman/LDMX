@@ -99,8 +99,13 @@ for entry in xrange(0, tree.GetEntries()):
                 hardestHadron = daughter
                 hardHadronMom = hardestHadron.getEndPointMomentum()[2] 
 
-    #ASSUMPTION: There is always at least 1 hadron per PN event
-    hardestHadronTheta = hardestHadron.getEndPointMomentum()[2]/(np.linalg.norm(hardestHadron.getEndPointMomentum()))
+    #Handle edge cases where no hadrons (or just no pions) are produced
+    if hardestHadron:
+        hardestHadronTheta = hardestHadron.getEndPointMomentum()[2]/(np.linalg.norm(hardestHadron.getEndPointMomentum()))
+        hardestHadronE = hardestHadron.getEnergy()
+    else: 
+        hardestHadronTheta = 0
+        hardestHadronE  = 0
     if hardestPion: 
         hardestPionTheta = hardestPion.getEndPointMomentum()[2]/(np.linalg.norm(hardestPion.getEndPointMomentum()))
         hardestPionE = hardestPion.getEnergy()
@@ -108,7 +113,7 @@ for entry in xrange(0, tree.GetEntries()):
         hardestPionTheta = 0
         hardestPionE = 0
     #Append the arrays to plot now that we found the hh and hp
-    hardestHadronEVec = np.append(hardestHadronEVec, hardestHadron.getEnergy())
+    hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
     hardestHadronThetaVec =np.append(hardestHadronThetaVec, 57.295779513 * np.arccos(hardestHadronTheta))
     hardestPionEVec = np.append(hardestPionEVec, hardestPionE)
     hardestPionThetaVec = np.append(hardestPionThetaVec, 57.295779513 * np.arccos(hardestPionTheta))
