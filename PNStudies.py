@@ -73,6 +73,7 @@ for entry in xrange(0, tree.GetEntries()):
 
 #ROOT
 c1 = TCanvas("c1")
+c1.SetLogy()
 hist = TH1D('PNgammaEHist', 'PNGammaE', 20, 0, 5000)
 fill_hist(hist, PNGammaEnergy)
 hist.SetTitle( "PN Gamma Energy")
