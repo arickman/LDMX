@@ -58,13 +58,13 @@ for entry in xrange(0, tree.GetEntries()):
             counter += 1
             if sParticle.getPdgID() == 11: 
                 eCounter += 1
-                eVec = np.append(eVec, sParticle.getEndPointMomentum())
+                eVec = np.append(eVec, sParticle.getEnergy())
             if sParticle.getPdgID() == 22: 
                 gCounter += 1
-                gammaVec = np.append(gammaVec, sParticle.getEndPointMomentum())
+                gammaVec = np.append(gammaVec, sParticle.getEnergy())
             if sParticle.getPdgID() == -11: 
                 posCounter += 1
-                posVec = np.append(posVec, sParticle.getEndPointMomentum())
+                posVec = np.append(posVec, sParticle.getEnergy())
     	#print("Particle Type: " + str(sParticle.getPdgID()))
     	#print("Vertex Position: " + str(sParticle.getVertex()[2]))
 print("Electron Count: " + str(eCounter))
@@ -94,19 +94,19 @@ hist.SetLineColor(r.kBlue)
 myLegend.AddEntry(hist, "Electron", "L")
 hist.Draw()
 
-hist2 = TH1D('Positron EndPoint Momentum', 'Positron EndPoint Momentum', 20, 0, 5000)
+hist2 = TH1D('Positron EndPoint Momentum', 'Positron EndPoint Momentum', 100, 0, 5000)
 fill_hist(hist2, posVec)
 hist2.SetLineColor(r.kRed)
 myLegend.AddEntry(hist2, "Positron", "L")
 hist2.Draw("same")
 
-hist3 = TH1D('Gamma EndPoint Momentum', 'Gamma EndPoint Momentum', 20, 0, 5000)
+hist3 = TH1D('Gamma EndPoint Momentum', 'Gamma EndPoint Momentum', 100, 0, 5000)
 fill_hist(hist3, gammaVec)
 hist3.SetLineColor(r.kGreen)
 myLegend.AddEntry(hist3, "Gamma", "L")
 hist3.Draw("same")
 myLegend.Draw()
-c1.SaveAs("endPointMomentumAtTarget.pdf")
+c1.SaveAs("energiesAtTarget.pdf")
 
 
 
