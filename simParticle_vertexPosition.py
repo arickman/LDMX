@@ -84,7 +84,7 @@ plt.savefig('simParticle_vPos.pdf')
 #ROOT
 c1 = TCanvas("c1")
 c1.SetLogy()
-hist = TH1D('Electron Energy', 'Electron Energy', 1000, 0, 5000)
+hist = TH1D('Electron Energy', 'Electron Energy', 100, 0, 5000)
 fill_hist(hist, eVec)
 hist.SetTitle( "Energy of particles produced at Target")
 hist.SetLineColor(1)
