@@ -83,7 +83,7 @@ plt.savefig('simParticle_vPos.pdf')
 
 #ROOT
 c1 = TCanvas("c1")
-c1.SetLogy()
+#c1.SetLogy()
 r.gStyle.SetOptStat(0)
 #myLegend = TLegend(0.9,0.7,0.48,0.9)
 myLegend = TLegend(0.9,0.7,0.75,0.9)
