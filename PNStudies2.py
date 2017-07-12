@@ -91,19 +91,19 @@ for entry in xrange(0, tree.GetEntries()):
         #Now we are dealing with a hadron, let's determine if it's a pion
         #Probably cleaner to find the hardestPion and Hadron and then get their energy and theta a single time at the end
         if is_pion(daughter) :
-            if daughter.getEndPointMomentum()[2] >  hardestPionMom : 
-                hardestPionMom = daughter.getEndPointMomentum()[2] 
+            if daughter.getMomentum()[2] >  hardestPionMom : 
+                hardestPionMom = daughter.getMomentum()[2] 
                 hardestPionE = daughter.getEnergy()
-                hardestPionTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
+                hardestPionTheta = daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
             if daughter.getEndPointMomentum()[2] >  hardestHadronMom : 
-                hardestHadronMom = daughter.getEndPointMomentum()[2] 
+                hardestHadronMom = daughter.getMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
-                hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
+                hardestHadronTheta = daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
         #Other Hadron
-        elif daughter.getEndPointMomentum()[2] >  hardestHadronMom : 
-                hardestHadronMom = daughter.getEndPointMomentum()[2] 
+        elif daughter.getMomentum()[2] >  hardestHadronMom : 
+                hardestHadronMom = daughter.getMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
-                hardestHadronTheta = daughter.getEndPointMomentum()[2]/(np.linalg.norm(daughter.getEndPointMomentum()))
+                hardestHadronTheta = daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
 
     #Append the arrays to plot now that we found the hh and hp
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
@@ -115,6 +115,7 @@ for entry in xrange(0, tree.GetEntries()):
 
 #ROOT
 c1 = TCanvas("c1")
+c1.SetLogy()
 hist = TH1D('hhE', 'hhE', 20, 0, 5000)
 fill_hist(hist, hardestHadronEVec)
 hist.SetTitle( "Hardest Hadron Kinetic Energy")
@@ -122,7 +123,7 @@ hist.SetTitle( "Hardest Hadron Kinetic Energy")
 hist.SetFillColor(13)
 hist.SetFillStyle(3025)
 hist.Draw()
-c1.SaveAs("HardestHadronE.pdf")
+c1.SaveAs("HardestHadronELogy.pdf")
 
 c1.Clear()
 hist2 = TH1D('hhT', 'hhT', 36, 0, 180)
@@ -131,7 +132,7 @@ hist2.SetTitle("Hardest Hadron Theta")
 hist2.SetFillColor(r.kBlack)
 hist2.SetFillStyle(3025)
 hist2.Draw()
-c1.SaveAs("HardestHadronTheta.pdf")
+c1.SaveAs("HardestHadronThetaLogy.pdf")
 
 c1.Clear()
 hist3 = TH1D('hpE', 'hhE', 20, 0, 5000)
@@ -140,7 +141,7 @@ hist3.SetTitle("Hardest Pion Kinetic Energy")
 hist3.SetFillColor(11)
 hist3.SetFillStyle(3025)
 hist3.Draw()
-c1.SaveAs("HardestPionE.pdf")
+c1.SaveAs("HardestPionELogy.pdf")
 
 c1.Clear()
 hist4 = TH1D('hpT', 'hpT', 36, 0, 180)
@@ -149,5 +150,5 @@ hist4.SetTitle("Hardest Pion Theta")
 hist4.SetFillColor(r.kBlue)
 hist4.SetFillStyle(3025)
 hist4.Draw()
-c1.SaveAs("HardestPionTheta.pdf")
+c1.SaveAs("HardestPionThetaLogy.pdf")
 
