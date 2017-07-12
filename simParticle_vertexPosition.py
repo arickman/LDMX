@@ -106,7 +106,7 @@ hist3.SetLineColor(r.kGreen)
 myLegend.AddEntry(hist3, "Gamma", "L")
 hist3.Draw("same")
 myLegend.Draw()
-c1.SaveAs("EndPoint MomentumAtTarget.pdf")
+c1.SaveAs("endPointMomentumAtTarget.pdf")
 
 
 
