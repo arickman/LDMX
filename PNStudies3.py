@@ -105,7 +105,6 @@ for entry in xrange(0, tree.GetEntries()):
 
 finalsPis = np.array(finalsPis)
 finalsProtons = np.array(finalsProtons)
-print(str(finalsProtons))
 
 #print number of events with desired single particle in final state
 print("The number of events with a single pion final state: "  + str(singlePion))
@@ -137,19 +136,17 @@ hist2.Draw()
 c1.SaveAs("protonMult.pdf")
 
 c1.Clear()
-hist3 = TH2D('finals against pis', 'finals vs pis', 100, 0, 100, 100, 0, 100)
+hist3 = TH2D('Pions', 'Pions', 10, 0, 100, 10, 0, 50)
 fill_hist(hist3, finalsPis)
 hist3.SetTitle("Total Particles vs Pions")
-hist3.SetFillColor(r.kRed)
-hist3.Draw()
+hist3.Draw("SURF2")
 c1.SaveAs("totalvsPions.pdf")
 
 c1.Clear()
-hist4 = TH2D('finals against protons', 'finals vs proton', 100, 0, 100, 100, 0, 100)
+hist4 = TH2D('Protons', 'Protons', 10, 0, 100, 10, 0, 50)
 fill_hist(hist4, finalsProtons)
-hist4.SetTitle("Total Particles vs Proton")
-hist4.SetFillColor(r.kBlue)
-hist4.Draw()
+hist4.SetTitle("Total Particles vs Protons")
+hist4.Draw("SURF2")
 c1.SaveAs("totalvsProtons.pdf")
 
 
