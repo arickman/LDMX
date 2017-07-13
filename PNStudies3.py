@@ -93,10 +93,9 @@ for entry in xrange(0, tree.GetEntries()):
     #Append the arrays to plot 
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
-    finalsPis = np.append(finalsPis, [PNGamma.getDaughterCount(), pionMult])
-    finalsProtons = np.append(finalsProtons, [PNGamma.getDaughterCount(), protonMult])
+    finalsPis = np.append(finalsPis, [PNGamma.getDaughterCount(), pionMult], 1)
+    finalsProtons = np.append(finalsProtons, [PNGamma.getDaughterCount(), protonMult], 1)
     print(str(finalsProtons))
-    print(str(finalsPis))
 
 #Histograms
 
