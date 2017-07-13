@@ -37,6 +37,7 @@ def is_pion(particle) :
 
 def find_theta(particle) :
     beamLineVec = [0, 0, particle.getMomentum()[2]]
+    if np.inner(particle.getMomentum(), beamLineVec) < 0 : print ("NEGATIVE")
     return 57.295779513 * np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
     #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
 
