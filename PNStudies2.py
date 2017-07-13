@@ -37,7 +37,7 @@ def is_pion(particle) :
 
 def find_theta(particle) :
     beamLineVec = [0, 0, particle.getMomentum()[2]]
-    return np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
+    return 57.295779513 * np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
     #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
 
 parser = argparse.ArgumentParser(description='')
@@ -114,9 +114,9 @@ for entry in xrange(0, tree.GetEntries()):
 
     #Append the arrays to plot now that we found the hh and hp
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
-    hardestHadronThetaVec =np.append(hardestHadronThetaVec, 57.295779513 * np.arccos(hardestHadronTheta))
+    hardestHadronThetaVec =np.append(hardestHadronThetaVec, hardestHadronTheta)
     hardestPionEVec = np.append(hardestPionEVec, hardestPionE)
-    hardestPionThetaVec = np.append(hardestPionThetaVec, 57.295779513 * np.arccos(hardestPionTheta))
+    hardestPionThetaVec = np.append(hardestPionThetaVec, hardestPionTheta)
 
 #Histograms
 
