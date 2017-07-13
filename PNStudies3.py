@@ -97,6 +97,7 @@ for entry in xrange(0, tree.GetEntries()):
     #Append the arrays to plot 
     if pionMult == 1 : singlePion += 1
     if protonMult == 1 : singleProton += 1
+    print("Pion: " + str(pionMult))
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
     piPair = [PNGamma.getDaughterCount(), pionMult]
