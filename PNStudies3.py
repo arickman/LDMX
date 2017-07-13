@@ -99,8 +99,8 @@ for entry in xrange(0, tree.GetEntries()):
     protonMultVec = np.append(protonMultVec, protonMult) 
     piPair = [PNGamma.getDaughterCount(), pionMult]
     proPair = [PNGamma.getDaughterCount(), protonMult]
-    finalsPis.append(finalsPis, piPair)
-    finalsProtons.append(finalsProtons, proPair)
+    finalsPis.append(piPair)
+    finalsProtons.append(proPair)
 
 
 finalsPis = np.array(finalsPis)
