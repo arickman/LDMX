@@ -98,13 +98,13 @@ for entry in xrange(0, tree.GetEntries()):
     if pionMult == 1 : singlePion += 1
     if protonMult == 1 : singleProton += 1
     print("Pion: " + str(pionMult))
+    print("singlePion: " + str(singlePion))
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
     piPair = [PNGamma.getDaughterCount(), pionMult]
     proPair = [PNGamma.getDaughterCount(), protonMult]
     finalsPis = np.append(finalsPis, piPair)
     finalsProtons = np.append(finalsProtons, proPair)
-    print(str(finalsProtons))
 
 #print number of events with desired single particle in final state
 print("The number of events with a single pion final state: "  + str(singlePion))
