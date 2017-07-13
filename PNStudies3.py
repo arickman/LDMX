@@ -99,12 +99,17 @@ for entry in xrange(0, tree.GetEntries()):
     protonMultVec = np.append(protonMultVec, protonMult) 
     piPair = [PNGamma.getDaughterCount(), pionMult]
     proPair = [PNGamma.getDaughterCount(), protonMult]
-    finalsPis = np.append(finalsPis, piPair)
-    finalsProtons = np.append(finalsProtons, proPair)
+    finalsPis.append(finalsPis, piPair)
+    finalsProtons.append(finalsProtons, proPair)
+
+
+finalsPis = np.array(finalsPis)
+finalsProtons = np.array(finalsProtons)
 
 #print number of events with desired single particle in final state
 print("The number of events with a single pion final state: "  + str(singlePion))
 print("The number of events with a single proton final state: "  + str(singleProton))
+
 
 #Histograms
 
@@ -145,3 +150,8 @@ hist4.SetTitle("Total Particles vs Proton")
 hist4.SetFillColor(r.kBlue)
 hist4.Draw()
 c1.SaveAs("totalvsProtons.pdf")
+
+
+#Scatter plot of theta vs T for single pion final state
+
+#Scatter plot of theta vs T for single proton final state
