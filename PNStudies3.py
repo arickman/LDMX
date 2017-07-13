@@ -61,8 +61,8 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 pionMultVec = []
 protonMultVec = []
-finalsPis = []
-finalsProtons = []
+finalsPis = [[]]
+finalsProtons = [[]]
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
