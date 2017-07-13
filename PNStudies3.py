@@ -61,7 +61,8 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 pionMultVec = []
 protonMultVec = []
-finals = []
+finalsPis = []
+finalsProtons = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -92,8 +93,8 @@ for entry in xrange(0, tree.GetEntries()):
     #Append the arrays to plot 
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
-    finals = np.append(finals, PNGamma.getDaughterCount()) 
-
+    finalsPis = np.append(finalsPis, [PNGamma.getDaughterCount(), pionMult]) 
+    finalsProtons = np.append(finalsProtons, [PNGamma.getDaughterCount(), protonsMult]) 
 
 #Histograms
 
@@ -119,19 +120,17 @@ hist2.SetFillColor(r.kBlack)
 hist2.Draw()
 c1.SaveAs("protonMult.pdf")
 
-arrayToPlot1 = [finals, pionMultVec]
 c1.Clear()
 hist3 = TH2D('finals against pis', 'finals vs pis', 100, 0, 100, 100, 0, 100)
-fill_hist(hist3, arrayToPlot1)
+fill_hist(hist3, finalsPis)
 hist3.SetTitle("Total Particles vs Pions")
 hist3.SetFillColor(r.kRed)
 hist3.Draw()
 c1.SaveAs("totalvsPions.pdf")
 
-arrayToPlot2 = [finals, protonMultVec]
 c1.Clear()
 hist4 = TH2D('finals against protons', 'finals vs proton', 100, 0, 100, 100, 0, 100)
-fill_hist(hist4, arrayToPlot2)
+fill_hist(hist4, finalsProtons)
 hist4.SetTitle("Total Particles vs Proton")
 hist4.SetFillColor(r.kBlue)
 hist4.Draw()
