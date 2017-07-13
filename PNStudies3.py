@@ -139,14 +139,16 @@ c1.Clear()
 hist3 = TH2D('Pions', 'Pions', 10, 0, 100, 10, 0, 50)
 fill_hist(hist3, finalsPis)
 hist3.SetTitle("Total Particles vs Pions")
-hist3.Draw("SURF2")
+
+hist3.Draw("COLZ")
 c1.SaveAs("totalvsPions.pdf")
 
 c1.Clear()
 hist4 = TH2D('Protons', 'Protons', 10, 0, 100, 10, 0, 50)
 fill_hist(hist4, finalsProtons)
 hist4.SetTitle("Total Particles vs Protons")
-hist4.Draw("SURF2")
+
+hist4.Draw("COLZ")
 c1.SaveAs("totalvsProtons.pdf")
 
 
