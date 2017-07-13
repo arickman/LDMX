@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 from ROOT import TFile,TTree,AddressOf,gROOT
 from ROOT import TCanvas
 from ROOT import TH1D
+from ROOT import TH2D
 from ROOT import TLegend
 from ROOT import TColor
 from root_numpy import fill_hist
