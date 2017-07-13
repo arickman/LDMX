@@ -115,6 +115,7 @@ print("The number of events with a single proton final state: "  + str(singlePro
 
 #ROOT
 c1 = TCanvas("c1")
+r.gStyle.SetOptStat(0)
 #c1.SetLogy()
 hist = TH1D('pi-mult', 'pi-mult', 100, 0, 100)
 fill_hist(hist, pionMultVec)
