@@ -35,6 +35,11 @@ def is_pion(particle) :
     if particle.getPdgID() == -211 or particle.getPdgID() == 111 or particle.getPdgID() == 211 :
         return True
 
+def find_theta(particle)
+    beamLineVec = [0, 0, particle.getMomentum()[2]]
+    return np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
+    #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
+
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
                     help='ROOT file to processed.')
@@ -94,16 +99,18 @@ for entry in xrange(0, tree.GetEntries()):
             if daughter.getMomentum()[2] >  hardestPionMom : 
                 hardestPionMom = daughter.getMomentum()[2] 
                 hardestPionE = daughter.getEnergy()
-                hardestPionTheta = daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
+                hardestPionTheta = find_theta(daughter)
+
             if daughter.getEndPointMomentum()[2] >  hardestHadronMom : 
                 hardestHadronMom = daughter.getMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
-                hardestHadronTheta = daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
+                hardestHadronTheta = find_theta(daughter)
+
         #Other Hadron
         elif daughter.getMomentum()[2] >  hardestHadronMom : 
                 hardestHadronMom = daughter.getMomentum()[2] 
                 hardestHadronE = daughter.getEnergy()
-                hardestHadronTheta = daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
+                hardestHadronTheta = find_theta(daughter)
 
     #Append the arrays to plot now that we found the hh and hp
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
