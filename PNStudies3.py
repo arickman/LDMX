@@ -61,8 +61,8 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 pionMultVec = []
 protonMultVec = []
-finalsPis = [[]]
-finalsProtons = [[]]
+finalsPis = []
+finalsProtons = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -93,8 +93,8 @@ for entry in xrange(0, tree.GetEntries()):
     #Append the arrays to plot 
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
-    finalsPis = np.append(finalsPis, [PNGamma.getDaughterCount(), pionMult],)
-    finalsProtons = np.append(finalsProtons, [PNGamma.getDaughterCount(), protonMult],)
+    finalsPis = finalsPis.append([PNGamma.getDaughterCount(), pionMult])
+    finalsProtons = finalsProtons.append([PNGamma.getDaughterCount()])
     print(str(finalsProtons))
 
 #Histograms
