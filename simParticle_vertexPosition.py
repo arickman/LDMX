@@ -24,6 +24,12 @@ def created_within_target(particle) :
     if abs(particle.getVertex()[2]) < 0.550 : return True 
     return False
 
+def pairProduced(particle) : 
+    if particle.getParentCount() != 1 : return False
+    parent = particle.getParent(0)
+    if parent.getDaughterCount() == 2 : return True
+    return False
+
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
                     help='ROOT file to processed.')
@@ -45,6 +51,7 @@ vPos = []
 eCounter = 0
 gCounter = 0
 posCounter = 0
+ppCounter = 0
 counter = 0
 eVec = []
 posVec = []
@@ -59,6 +66,7 @@ for entry in xrange(0, tree.GetEntries()):
             if sParticle.getPdgID() == 11: 
                 eCounter += 1
                 eVec = np.append(eVec, sParticle.getEndPoint()[2])
+                if pairProduced(sParticle) : ppCounter += 1
             if sParticle.getPdgID() == 22: 
                 gCounter += 1
                 gammaVec = np.append(gammaVec, sParticle.getEndPoint()[2])
@@ -68,6 +76,7 @@ for entry in xrange(0, tree.GetEntries()):
     	#print("Particle Type: " + str(sParticle.getPdgID()))
     	#print("Vertex Position: " + str(sParticle.getVertex()[2]))
 print("Electron Count: " + str(eCounter))
+print("Number of Electrons resulting from pair production: " + str(ppCounter))
 print("Gamma Count: " + str(gCounter))
 print("Positron Count: " + str(posCounter))
 print("Total Particles: " + str(counter))
