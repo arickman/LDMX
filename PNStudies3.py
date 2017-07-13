@@ -105,6 +105,7 @@ for entry in xrange(0, tree.GetEntries()):
 
 finalsPis = np.array(finalsPis)
 finalsProtons = np.array(finalsProtons)
+print(str(finalsProtons))
 
 #print number of events with desired single particle in final state
 print("The number of events with a single pion final state: "  + str(singlePion))
