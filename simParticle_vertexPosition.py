@@ -52,6 +52,7 @@ eCounter = 0
 gCounter = 0
 posCounter = 0
 ppCounter = 0
+ppCounter2 = 0
 counter = 0
 eVec = []
 posVec = []
@@ -73,12 +74,14 @@ for entry in xrange(0, tree.GetEntries()):
             if sParticle.getPdgID() == -11: 
                 posCounter += 1
                 posVec = np.append(posVec, sParticle.getEndPoint()[2])
+                if pairProduced(sParticle) : ppCounter2 += 1
     	#print("Particle Type: " + str(sParticle.getPdgID()))
     	#print("Vertex Position: " + str(sParticle.getVertex()[2]))
 print("Electron Count: " + str(eCounter))
 print("Number of Electrons resulting from pair production: " + str(ppCounter))
 print("Gamma Count: " + str(gCounter))
 print("Positron Count: " + str(posCounter))
+print("Number of Positrons resulting from pair production: " + str(ppCounter2))
 print("Total Particles: " + str(counter))
 #Generate the plot
 
