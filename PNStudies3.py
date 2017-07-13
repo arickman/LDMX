@@ -63,6 +63,8 @@ pionMultVec = []
 protonMultVec = []
 finalsPis = []
 finalsProtons = []
+singlePion = 0
+singleProton = 0
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -85,17 +87,27 @@ for entry in xrange(0, tree.GetEntries()):
     #loop through daughters of PNGamma
     pionMult = 0
     protonMult = 0
+    singlePion = 0
+    singleProton = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
         if is_pion(daughter) : pionMult += 1
         elif daughter.getPdgID() == 2212 : protonMult += 1
             
     #Append the arrays to plot 
+    if pionMult == 1 : singlePion += 1
+    if protonMult == 1 : singleProton += 1
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
-    finalsPis = finalsPis.append([PNGamma.getDaughterCount(), pionMult])
-    finalsProtons = finalsProtons.append([PNGamma.getDaughterCount()])
+    piPair = [PNGamma.getDaughterCount(), pionMult]
+    proPair = [PNGamma.getDaughterCount(), protonMult]
+    finalsPis = np.append(finalsPis, piPair)
+    finalsProtons = np.append(finalsProtons, proPair)
     print(str(finalsProtons))
+
+#print number of events with desired single particle in final state
+print("The number of events with a single pion final state: "  + str(singlePion))
+print("The number of events with a single proton final state: "  + str(singleProton))
 
 #Histograms
 
