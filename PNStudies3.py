@@ -101,6 +101,7 @@ hist = TH1D('pi-mult', 'pi-mult', 100, 0, 100)
 fill_hist(hist, pionMultVec)
 hist.SetTitle( "Pion Multiplicity")
 #change style
+hist.SetFillColor(r.kGreen - 3)
 #hist.SetFillStyle(3025)
 hist.Draw()
 c1.SaveAs("pionMult.pdf")
