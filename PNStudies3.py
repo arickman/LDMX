@@ -87,8 +87,6 @@ for entry in xrange(0, tree.GetEntries()):
     #loop through daughters of PNGamma
     pionMult = 0
     protonMult = 0
-    singlePion = 0
-    singleProton = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
         if is_pion(daughter) : pionMult += 1
@@ -97,8 +95,6 @@ for entry in xrange(0, tree.GetEntries()):
     #Append the arrays to plot 
     if pionMult == 1 : singlePion += 1
     if protonMult == 1 : singleProton += 1
-    print("Pion: " + str(pionMult))
-    print("singlePion: " + str(singlePion))
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
     piPair = [PNGamma.getDaughterCount(), pionMult]
