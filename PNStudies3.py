@@ -101,8 +101,7 @@ hist = TH1D('pi-mult', 'pi-mult', 100, 0, 100)
 fill_hist(hist, pionMultVec)
 hist.SetTitle( "Pion Multiplicity")
 #change style
-hist.SetFillColor(r.kGreen - 2)
-hist.SetFillStyle(3025)
+#hist.SetFillStyle(3025)
 hist.Draw()
 c1.SaveAs("pionMult.pdf")
 
@@ -112,7 +111,7 @@ hist2 = TH1D('proton-mult', 'proton-mult', 100, 0, 100)
 fill_hist(hist2, protonMultVec)
 hist2.SetTitle("Proton Multiplicity")
 hist2.SetFillColor(r.kBlack)
-hist2.SetFillStyle(3025)
+#hist2.SetFillStyle(3025)
 hist2.Draw()
 c1.SaveAs("protonMult.pdf")
 
