@@ -35,7 +35,7 @@ def is_pion(particle) :
     if particle.getPdgID() == -211 or particle.getPdgID() == 111 or particle.getPdgID() == 211 :
         return True
 
-def find_theta(particle)
+def find_theta(particle) :
     beamLineVec = [0, 0, particle.getMomentum()[2]]
     return np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
     #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
