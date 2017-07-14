@@ -113,6 +113,8 @@ for entry in xrange(0, tree.GetEntries()):
                 hardestHadronE = daughter.getEnergy()
                 hardestHadronTheta = find_theta(daughter)
 
+    print("Hadron theta: " + str(hardestHadronTheta))
+    print("Pion theta: " + str(hardestPionTheta))
     #Append the arrays to plot now that we found the hh and hp
     hardestHadronEVec = np.append(hardestHadronEVec, hardestHadronE)
     hardestHadronThetaVec =np.append(hardestHadronThetaVec, hardestHadronTheta)
