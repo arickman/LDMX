@@ -27,7 +27,10 @@ def created_within_target(particle) :
 def pairProduced(particle) : 
     if particle.getParentCount() != 1 : return False
     parent = particle.getParent(0)
-    if parent.getDaughterCount() == 2 : return True
+    if parent.getPdgID() != 22 : return False
+    if parent.getDaughterCount() == 2 :
+        if parent.getDaughter(0).getPdgID() == 11 and parent.getDaughter(1).getPdgID() == -11 : return True
+        if parent.getDaughter(1).getPdgID() == 11 and parent.getDaughter(0).getPdgID() == -11 : return True
     return False
 
 parser = argparse.ArgumentParser(description='')
