@@ -72,12 +72,13 @@ for entry in xrange(0, tree.GetEntries()):
                 eVec = np.append(eVec, sParticle.getEndPoint()[2])
                 if pairProduced(sParticle) : ppCounter += 1
                 else :
+                    print("The non-pair produced electron had " + str(sParticle.getParentCount()) + "parents")
                     daughterVec = []
                     parent = sParticle.getParent(0)
                     for dNumb in xrange(0, parent.getDaughterCount()) :
                         daughterVec.append(parent.getDaughter(dNumb).getPdgID())
                     if parent.getPdgID() == 11 :
-                        print("The non-pair produced electron's fellow daughters (including itself): " + str(daughterVec) )
+                       # print("The non-pair produced electron's fellow daughters (including itself): " + str(daughterVec) )
             if sParticle.getPdgID() == 22: 
                 gCounter += 1
                 gammaVec = np.append(gammaVec, sParticle.getEndPoint()[2])
