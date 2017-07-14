@@ -63,6 +63,7 @@ protonProton = []
 protonGamma = []
 pionPion = []
 pionGamma = []
+daughterTheta = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -92,7 +93,7 @@ for entry in xrange(0, tree.GetEntries()):
     pionTheta = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
-        #print("theta: " + str(find_theta(daughter)))
+        daughterTheta.append(find_theta(daughter))
         if is_pion(daughter) : 
             pionMult += 1
             if pionMult == 1 : 
@@ -124,6 +125,14 @@ pionGamma = np.array(pionGamma)
 #Histograms
 
 #ROOT
+c1 = TCanvas("c1")
+r.gStyle.SetOptStat(0)
+hist = TH1D('Daughter Theta', 'Daughter Theta', 36, 0, 180)
+fill_hist(hist, daughterTheta)
+hist.SetTitle("PNGamma Daughter Theta")
+hist.Draw()
+c1.SaveAs("daughterTheta.pdf")
+
 #Scatter plot of theta vs T(pion) for single pion final state
 c1 = TCanvas("c1")
 r.gStyle.SetOptStat(0)
