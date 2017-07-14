@@ -92,6 +92,7 @@ for entry in xrange(0, tree.GetEntries()):
     pionTheta = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
+        print("theta: " + str(find_theta(daughter)))
         if is_pion(daughter) : 
             pionMult += 1
             if pionMult == 1 : 
@@ -150,7 +151,7 @@ c1.SaveAs("angleEnergyGammaPion.pdf")
 
 #Scatter plot of theta vs T(PNGamma) for single proton final state
 c1.Clear()
-hist8 = TH2D('Theta Vs T', 'Theta vs T', 36, 0, 180, 100, 0, 10000)
+hist8 = THD('Theta Vs T', 'Theta vs T', 36, 0, 180, 100, 0, 10000)
 fill_hist(hist8, protonGamma)
 hist8.SetTitle("Theta vs T(PNGamma) for Single proton Final State")
 hist8.Draw("COLZ")
