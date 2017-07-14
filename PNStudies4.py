@@ -126,7 +126,7 @@ pionGamma = np.array(pionGamma)
 
 #ROOT
 c1 = TCanvas("c1")
-r.gStyle.SetOptStat(0)
+#r.gStyle.SetOptStat(0)
 hist = TH1D('Daughter Theta', 'Daughter Theta', 36, 0, 180)
 fill_hist(hist, daughterTheta)
 hist.SetTitle("PNGamma Daughter Theta")
@@ -136,7 +136,7 @@ c1.SaveAs("daughterTheta.pdf")
 
 #Scatter plot of theta vs T(pion) for single pion final state
 c1 = TCanvas("c1")
-r.gStyle.SetOptStat(0)
+#r.gStyle.SetOptStat(0)
 hist5 = TH2D('Theta Vs T', 'Theta vs T', 36, 0, 180, 100, 0, 10000)
 fill_hist(hist5, pionPion)
 hist5.SetTitle("Theta vs T(pion) for Single pion Final State")
