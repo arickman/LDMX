@@ -130,6 +130,7 @@ r.gStyle.SetOptStat(0)
 hist = TH1D('Daughter Theta', 'Daughter Theta', 36, 0, 180)
 fill_hist(hist, daughterTheta)
 hist.SetTitle("PNGamma Daughter Theta")
+hist.SetFillColor(r.kBlue + 10)
 hist.Draw()
 c1.SaveAs("daughterTheta.pdf")
 
