@@ -116,8 +116,8 @@ protonArray = np.array(protonVec)
 #ROOT
 #Scatter plot of theta vs T(pion) for single pion final state
 c1 = TCanvas("c1")
-#r.gStyle.SetOptStat(0)
-hist = TH2D('Theta Vs Momentum', 'Theta vs Mom', 36, 0, 180, 100, 0, 5000)
+r.gStyle.SetOptStat(0)
+hist = TH2D('Theta Vs Momentum', 'Theta vs Mom', 36, 0, 180, 50, 0, 5000)
 fill_hist(hist, pionArray)
 hist.SetTitle("Theta vs Momentum(pion) for Single pion Final State")
 hist.Draw("COLZ")
@@ -125,7 +125,7 @@ c1.SaveAs("angleMomPion.pdf")
 
 #Scatter plot of theta vs T(proton) for single proton final state
 c1.Clear()
-hist2 = TH2D('Theta Vs Momentum', 'Theta Vs Momentum', 36, 0, 180, 100, 0, 5000)
+hist2 = TH2D('Theta Vs Momentum', 'Theta Vs Momentum', 36, 0, 180, 50, 0, 5000)
 fill_hist(hist2, protonArray)
 hist2.SetTitle("Theta vs Momentum(proton) for Single proton Final State")
 hist2.Draw("COLZ")
