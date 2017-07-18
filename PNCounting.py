@@ -67,6 +67,10 @@ oneCharged = 0
 twoCharged = 0
 threeCharged = 0
 fourPlusCharged = 0
+onePion = 0
+twoPion = 0
+threePion = 0
+fourPlusPion = 0
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -91,9 +95,11 @@ for entry in xrange(0, tree.GetEntries()):
     protonMult = 0
     neutronMult = 0
     hardChargedMult = 0
+    hardPionMult = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
+        if is_pion(daughter) and daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardPionMult += 1
         if is_pion(daughter) : pionMult += 1
         if daughter.getPdgID() == 2112 : neutronMult += 1
         if daughter.getPdgID() == 2212 : protonMult += 1
@@ -104,6 +110,11 @@ for entry in xrange(0, tree.GetEntries()):
     if hardChargedMult == 2 : twoCharged += 1
     if hardChargedMult == 3 : threeCharged += 1
     if hardChargedMult > 3 :  fourPlusCharged += 1
+    if hardPionMult == 1 : onePion += 1
+    if hardPionMult == 2 : twoPion += 1
+    if hardPionMult == 3 : threePion += 1
+    if hardPionMult > 3 :  fourPlusPion += 1
+    
 
     #Append the arrays to plot 
     pionMultVec = np.append(pionMultVec, pionMult)
@@ -118,6 +129,10 @@ print("The fraction of events with 1 hard charged particle: " + str(oneCharged/t
 print("The fraction of events with 2 hard charged particles: " + str(twoCharged/tree.GetEntries()))
 print("The fraction of events with 3 hard charged particles: " + str(threeCharged/tree.GetEntries()))
 print("The fraction of events with 4+ hard charged particles: " + str(fourPlusCharged/tree.GetEntries()))
+print("The fraction of events with 1 hard pion: " + str(onePion/tree.GetEntries()))
+print("The fraction of events with 2 hard pions: " + str(twoPion/tree.GetEntries()))
+print("The fraction of events with 3 hard pions: " + str(threePion/tree.GetEntries()))
+print("The fraction of events with 4+ hard pions: " + str(fourPlusPion/tree.GetEntries()))
 
 
 #ROOT
