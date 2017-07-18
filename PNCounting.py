@@ -63,10 +63,12 @@ pionMultVec = []
 protonMultVec = []
 neutronMultVec = []
 hardChargedMultVec = []
+zeroCharged = 0
 oneCharged = 0
 twoCharged = 0
 threeCharged = 0
 fourPlusCharged = 0
+zeroPion = 0
 onePion = 0
 twoPion = 0
 threePion = 0
@@ -106,10 +108,12 @@ for entry in xrange(0, tree.GetEntries()):
             
 
     #Add to the charged particle counters:
+    if hardChargedMult == 0 : zeroCharged += 1
     if hardChargedMult == 1 : oneCharged += 1
     if hardChargedMult == 2 : twoCharged += 1
     if hardChargedMult == 3 : threeCharged += 1
     if hardChargedMult > 3 :  fourPlusCharged += 1
+    if hardPionMult == 0 : zeroPion += 1
     if hardPionMult == 1 : onePion += 1
     if hardPionMult == 2 : twoPion += 1
     if hardPionMult == 3 : threePion += 1
@@ -125,10 +129,12 @@ for entry in xrange(0, tree.GetEntries()):
 
 
 #Printout the counters of each fraction
+print("The fraction of events with 0 hard charged particles: " + str(zeroCharged/tree.GetEntries()))
 print("The fraction of events with 1 hard charged particle: " + str(oneCharged/tree.GetEntries()))
 print("The fraction of events with 2 hard charged particles: " + str(twoCharged/tree.GetEntries()))
 print("The fraction of events with 3 hard charged particles: " + str(threeCharged/tree.GetEntries()))
 print("The fraction of events with 4+ hard charged particles: " + str(fourPlusCharged/tree.GetEntries()))
+print("The fraction of events with 0 hard pions: " + str(zeroPion/tree.GetEntries()))
 print("The fraction of events with 1 hard pion: " + str(onePion/tree.GetEntries()))
 print("The fraction of events with 2 hard pions: " + str(twoPion/tree.GetEntries()))
 print("The fraction of events with 3 hard pions: " + str(threePion/tree.GetEntries()))
