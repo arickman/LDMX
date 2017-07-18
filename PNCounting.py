@@ -98,7 +98,7 @@ for entry in xrange(0, tree.GetEntries()):
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
     neutronMultVec = np.append(neutronMultVec, neutronMult)
-    hardChargedMultVec = np.append(hardChargedMultVec. hardChargedMult)
+    hardChargedMultVec = np.append(hardChargedMultVec, hardChargedMult)
 
 #ROOT
 c1 = TCanvas("c1")
