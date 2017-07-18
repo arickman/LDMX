@@ -62,6 +62,7 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 pionMultVec = []
 protonMultVec = []
 neutronMultVec = []
+hardChargedMultVec = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -85,16 +86,19 @@ for entry in xrange(0, tree.GetEntries()):
     pionMult = 0
     protonMult = 0
     neutronMult = 0
+    hardChargedMult = 0
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
+        if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
         if is_pion(daughter) : pionMult += 1
-        elif daughter.getPdgID() == 2112 : neutronMult += 1
-        elif daughter.getPdgID() == 2212 : protonMult += 1
+        if daughter.getPdgID() == 2112 : neutronMult += 1
+        if daughter.getPdgID() == 2212 : protonMult += 1
             
     #Append the arrays to plot 
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
     neutronMultVec = np.append(neutronMultVec, neutronMult)
+    hardChargedMultVec = np.append(hardChargedMultVec. hardChargedMult)
 
 #ROOT
 c1 = TCanvas("c1")
@@ -128,6 +132,16 @@ hist3.SetFillColor(r.kRed)
 #hist2.SetFillStyle(3025)
 hist3.Draw()
 c1.SaveAs("NeutronMult.pdf")
+
+c1.Clear()
+#c1.SetLogy()
+hist4 = TH1D('hard, charged particle-mult', 'hard, charged particle-mult', 50, 0, 50)
+fill_hist(hist4, hardChargedMultVec)
+hist4.SetTitle("Hard, Charged Particle Multiplicity")
+hist4.SetFillColor(r.kBlue)
+#hist2.SetFillStyle(3025)
+hist4.Draw()
+c1.SaveAs("chargedMult.pdf")
 
 
 
