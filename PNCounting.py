@@ -63,6 +63,10 @@ pionMultVec = []
 protonMultVec = []
 neutronMultVec = []
 hardChargedMultVec = []
+oneCharged = 0
+twoCharged = 0
+threeCharged = 0
+fourPlusCharged = 0
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -94,11 +98,27 @@ for entry in xrange(0, tree.GetEntries()):
         if daughter.getPdgID() == 2112 : neutronMult += 1
         if daughter.getPdgID() == 2212 : protonMult += 1
             
+
+    #Add to the charged particle counters:
+    if hardChargedMult == 1 : oneCharged += 1
+    if hardChargedMult == 2 : twoCharged += 1
+    if hardChargedMult == 3 : threeCharged += 1
+    if hardChargedMult > 3 :  fourPlusCharged += 1
+
     #Append the arrays to plot 
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
     neutronMultVec = np.append(neutronMultVec, neutronMult)
     hardChargedMultVec = np.append(hardChargedMultVec, hardChargedMult)
+
+
+
+#Printout the counters of each fraction
+print("The fraction of events with 1 hard charged particle: " + str(oneCharged/tree.GetEntries()))
+print("The fraction of events with 2 hard charged particles: " + str(twoCharged/tree.GetEntries()))
+print("The fraction of events with 3 hard charged particles: " + str(threeCharged/tree.GetEntries()))
+print("The fraction of events with 4+ hard charged particles: " + str(fourPlusCharged/tree.GetEntries()))
+
 
 #ROOT
 c1 = TCanvas("c1")
