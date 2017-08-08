@@ -158,7 +158,7 @@ c1.SaveAs("ENprotonMult.pdf")
 
 c1.Clear()
 #c1.SetLogy()
-hist3 = TH1D('neutron-mult', 'neutron-mult', 50, 0, 100)
+hist3 = TH1D('neutron-mult', 'neutron-mult', 50, 0, 150)
 fill_hist(hist3, neutronMultVec)
 hist3.SetTitle("Neutron Multiplicity")
 hist3.SetFillColor(r.kRed)
