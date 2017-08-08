@@ -172,7 +172,7 @@ hist3.SetTitle("Neutron Multiplicity")
 hist3.SetFillColor(r.kRed)
 #hist2.SetFillStyle(3025)
 hist3.Draw()
-c1.SaveAs("NeutronMult.pdf")
+c1.SaveAs("neutronMult.pdf")
 
 c1.Clear()
 #c1.SetLogy()
