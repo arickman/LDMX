@@ -58,7 +58,7 @@ r.gSystem.Load(ldmx_lib_path)
 rfile = r.TFile(args.rfile_path)
 tree = rfile.Get("LDMX_Events")
 
-simHits = r.TClonesArray('ldmx::HcalHit')
+simHits = r.TClonesArray('ldmx::SimCalorimterHit')
 tree.SetBranchAddress("HcalSimHits_sim", r.AddressOf(simHits))
 
 eDepSummed = []
