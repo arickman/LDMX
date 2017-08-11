@@ -61,6 +61,7 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 PNGammaEnergy = []
 multiplicity = []
 wVec = []
+hardestHadronMomVec = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -85,9 +86,21 @@ for entry in xrange(0, tree.GetEntries()):
             wVec.append(wExpression(PNGamma))
         PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
         multiplicity = np.append(multiplicity, PNGamma.getDaughterCount())
+
+        #Now we have the PNGamma, let's loop through its daughters and find the hardest hadron
+        #ASSUMPTION: Hard is defined as having the greatest pz
+        hardestHadronMom = 0
+        for dCount in xrange(0, PNGamma.getDaughterCount()):
+            daughter = PNGamma.getDaughter(dCount)
+            if not_hadron(daughter): continue
+            #Now we are dealing with a hadron
+            if daughter.getMomentum()[2] >  hardestHadronMom : 
+                    hardestHadronMom = daughter.getMomentum()[2] 
+        #Append the arrays to plot now
+        hardestHadronMomVec = np.append(hardestHadronMomVec, hardestHadronMom)
     
 
-#Histogram of PN gamma energy
+#Histograms
 
 #ROOT
 c1 = TCanvas("c1")
@@ -120,6 +133,18 @@ hist3.SetFillColor(10)
 hist3.SetFillStyle(3025)
 hist3.Draw()
 c1.SaveAs("validation_W.pdf")
+
+#ROOT-hardest hardron momentum
+c1.Clear()
+c1.SetLogy()
+hist4 = TH1D('hhp', 'hhp', 20, 0, 5000)
+fill_hist(hist4, hardestHadronMomVec)
+hist4.SetTitle( "Hardest Hadron Momentum")
+#change style
+hist4.SetFillColor(13)
+hist4.SetFillStyle(3025)
+hist4.Draw()
+c1.SaveAs("HardestHadronMomLogy.pdf")
 
 
 
