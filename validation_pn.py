@@ -28,6 +28,19 @@ def created_within_target(particle) :
 def is_incident(particle) :
     return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)
 
+def find_theta(particle) :
+    beamLineVec = [0, 0, particle.getMomentum()[2]]
+    if np.inner(particle.getMomentum(), beamLineVec) < 0 : print ("NEGATIVE")
+    return 57.295779513 * np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
+    #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
+
+def wExpression(particle):
+    if (particle):
+        mom = np.linalg.norm(particle.getMomentum())
+        kin = particle.getEnergy()
+        delt = 0.5
+        return ((mom + kin)/(2*math.sqrt(1 + math.pow(delt, 2)))) - delt*np.cos(find_theta(particle))
+
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
                     help='ROOT file to processed.')
@@ -47,6 +60,7 @@ tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
 PNGammaEnergy = []
 multiplicity = []
+wVec = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     #find the incident electron
@@ -67,6 +81,7 @@ for entry in xrange(0, tree.GetEntries()):
             PNGamma = daughter
             break
     if (PNGamma) :
+        wVec.append(wExpression(PNGamma))
         PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
         multiplicity = np.append(multiplicity, PNGamma.getDaughterCount())
     
@@ -95,6 +110,15 @@ hist2.SetFillStyle(3025)
 hist2.Draw()
 c1.SaveAs("validation_multiplicity.pdf")
 
+#w plot
+c1.Clear()
+hist3 = TH1D('w', 'w', 130, 0, 130)
+fill_hist(hist3, wVec)
+hist3.SetTitle("W")
+hist3.SetFillColor(10)
+hist3.SetFillStyle(3025)
+hist3.Draw()
+c1.SaveAs("validation_W.pdf")
 
 
 
