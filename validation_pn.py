@@ -28,6 +28,10 @@ def created_within_target(particle) :
 def is_incident(particle) :
     return (particle.getPdgID() == 11) & (particle.getParentCount() == 0)
 
+def not_hadron(particle) : #ASSUMPTION: only non-hadrons produced are electrons, positrons and gammas
+    if particle.getPdgID() == -11 or particle.getPdgID() == 11 or particle.getPdgID() == 22 :
+        return True
+
 def find_theta(particle) :
     beamLineVec = [0, 0, particle.getMomentum()[2]]
     if np.inner(particle.getMomentum(), beamLineVec) < 0 : print ("NEGATIVE")
