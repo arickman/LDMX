@@ -66,8 +66,9 @@ for entry in xrange(0, tree.GetEntries()):
         if (daughter.getPdgID() == 22 and created_within_target(daughter) and created_within_target(daughter.getDaughter(0))):
             PNGamma = daughter
             break
-    PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
-    multiplicity = np.append(multiplicity, PNGamma.getDaughterCount())
+    if (PNGamma) :
+        PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
+        multiplicity = np.append(multiplicity, PNGamma.getDaughterCount())
     
 
 #Histogram of PN gamma energy
