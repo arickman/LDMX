@@ -81,7 +81,8 @@ for entry in xrange(0, tree.GetEntries()):
             PNGamma = daughter
             break
     if (PNGamma) :
-        wVec.append(wExpression(PNGamma))
+        if find_theta(PNGamma) > 100 : 
+            wVec.append(wExpression(PNGamma))
         PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
         multiplicity = np.append(multiplicity, PNGamma.getDaughterCount())
     
@@ -112,7 +113,7 @@ c1.SaveAs("validation_multiplicity.pdf")
 
 #w plot
 c1.Clear()
-hist3 = TH1D('w', 'w', 130, 0, 130)
+hist3 = TH1D('w', 'w', 500, 0, 5000)
 fill_hist(hist3, wVec)
 hist3.SetTitle("W")
 hist3.SetFillColor(10)
