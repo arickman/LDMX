@@ -67,7 +67,7 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     eDepSum = 0
     for simHit in simHits : 
-        print("Energy dep from this hit is: " + str(simHit.getEdep())
+        print("Energy dep from this hit is: " + str(simHit.getEdep()))
         eDepReadout.append(simHit.getEdep())
         eDepSum += simHit.getEdep()
     eDepSummed.append(eDepSum)
