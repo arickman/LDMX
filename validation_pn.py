@@ -89,23 +89,25 @@ for entry in xrange(0, tree.GetEntries()):
             PNGamma = daughter
             break
     if (PNGamma) :
-        print("The angle is: " + str(find_theta(PNGamma)))
-        if find_theta(PNGamma) > 100 : 
-            wVec.append(wExpression(PNGamma))
         PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
         multiplicity = np.append(multiplicity, PNGamma.getDaughterCount())
 
         #Now we have the PNGamma, let's loop through its daughters and find the hardest hadron
         #ASSUMPTION: Hard is defined as having the greatest pz
         hardestHadronMom = 0
+        maxW = 0
         for dCount in xrange(0, PNGamma.getDaughterCount()):
             daughter = PNGamma.getDaughter(dCount)
+            if find_theta(daughter) > 100 : 
+                if wExpression(daughter) >  maxW : maxW = wExpression(daughter)
             if not_hadron(daughter): continue
             #Now we are dealing with a hadron
             if daughter.getMomentum()[2] >  hardestHadronMom : 
                     hardestHadronMom = daughter.getMomentum()[2] 
         #Append the arrays to plot now
         hardestHadronMomVec = np.append(hardestHadronMomVec, hardestHadronMom)
+        wVec.append(maxW)
+        
     
 
 #Histograms
