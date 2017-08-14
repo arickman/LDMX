@@ -89,6 +89,7 @@ for entry in xrange(0, tree.GetEntries()):
             PNGamma = daughter
             break
     if (PNGamma) :
+        print("The angle is: " + str(find_theta(PNGamma)))
         if find_theta(PNGamma) > 100 : 
             wVec.append(wExpression(PNGamma))
         PNGammaEnergy = np.append(PNGammaEnergy, PNGamma.getEnergy())
