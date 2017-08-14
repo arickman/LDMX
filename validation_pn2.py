@@ -67,9 +67,9 @@ for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     eDepSum = 0
     for hit in hits : 
-        #print("Energy dep from this hit is: " + str(simHit.getEdep()))
+        #print("Energy dep from this hit is: " + str(hit.getEdep()))
         eDepReadout.append(hit.getEnergy())
-        eDepSum += simHit.getEnergy()
+        eDepSum += hit.getEnergy()
     eDepSummed.append(eDepSum)
 
 #Histograms
