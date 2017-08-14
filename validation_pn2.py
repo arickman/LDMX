@@ -58,18 +58,18 @@ r.gSystem.Load(ldmx_lib_path)
 rfile = r.TFile(args.rfile_path)
 tree = rfile.Get("LDMX_Events")
 
-simHits = r.TClonesArray('ldmx::SimCalorimterHit')
-tree.SetBranchAddress("EcalSimHits_sim", r.AddressOf(simHits))
+hits = r.TClonesArray('ldmx::EcalHit')
+tree.SetBranchAddress("ecalDigis_recon", r.AddressOf(hits))
 
 eDepSummed = []
 eDepReadout = []
 for entry in xrange(0, tree.GetEntries()):
     tree.GetEntry(entry)
     eDepSum = 0
-    for simHit in simHits : 
-        print("Energy dep from this hit is: " + str(simHit.getEdep()))
-        eDepReadout.append(simHit.getEdep())
-        eDepSum += simHit.getEdep()
+    for hit in hits : 
+        #print("Energy dep from this hit is: " + str(simHit.getEdep()))
+        eDepReadout.append(hit.getEnergy())
+        eDepSum += simHit.getEnergy()
     eDepSummed.append(eDepSum)
 
 #Histograms
@@ -81,8 +81,8 @@ hist = TH1D('readoutEdep', 'readoutEdep', 50, 0, 200)
 fill_hist(hist, eDepReadout)
 hist.SetTitle( "Readout Hit Energy Deposited in ECal")
 #change style
-hist.SetFillColor(8)
-hist.SetFillStyle(3025)
+#hist.SetFillColor(8)
+#hist.SetFillStyle(3025)
 hist.Draw()
 c1.SaveAs("eDepReadoutEcal.pdf")
 
@@ -90,7 +90,7 @@ hist2 = TH1D('summedEdep', 'summedEdep', 50, 0, 500)
 fill_hist(hist2, eDepSummed)
 hist2.SetTitle( "Summed Hit Energy Deposited in ECal")
 #change style
-hist2.SetFillColor(9)
-hist2.SetFillStyle(3025)
+#hist2.SetFillColor(9)
+#hist2.SetFillStyle(3025)
 hist2.Draw()
 c1.SaveAs("eDepSummedEcal.pdf")
