@@ -58,8 +58,8 @@ r.gSystem.Load(ldmx_lib_path)
 rfile = r.TFile(args.rfile_path)
 tree = rfile.Get("LDMX_Events")
 
-hits = r.TClonesArray('ldmx::EcalHit')
-tree.SetBranchAddress("ecalDigis_recon", r.AddressOf(hits))
+hits = r.TClonesArray('ldmx::HcalHit')
+tree.SetBranchAddress("hcalDigis_recon", r.AddressOf(hits))
 
 eDepSummed = []
 eDepReadout = []
@@ -77,20 +77,20 @@ for entry in xrange(0, tree.GetEntries()):
 #ROOT
 c1 = TCanvas("c1")
 c1.SetLogy()
-hist = TH1D('readoutEdep', 'readoutEdep', 50, 0, 100)
+hist = TH1D('readoutEdep', 'readoutEdep', 75, 0, 150)
 fill_hist(hist, eDepReadout)
-hist.SetTitle( "Readout Hit Energy Deposited in ECal")
+hist.SetTitle( "Readout Hit Energy Deposited in HCal")
 #change style
 #hist.SetFillColor(8)
 #hist.SetFillStyle(3025)
 hist.Draw()
-c1.SaveAs("eDepReadoutEcal.pdf")
+c1.SaveAs("eDepReadoutHcal.pdf")
 
-hist2 = TH1D('summedEdep', 'summedEdep', 75, 0, 150)
+hist2 = TH1D('summedEdep', 'summedEdep', 200, 0, 400)
 fill_hist(hist2, eDepSummed)
-hist2.SetTitle( "Summed Hit Energy Deposited in ECal")
+hist2.SetTitle( "Summed Hit Energy Deposited in HCal")
 #change style
 #hist2.SetFillColor(9)
 #hist2.SetFillStyle(3025)
 hist2.Draw()
-c1.SaveAs("eDepSummedEcal.pdf")
+c1.SaveAs("eDepSummedHcal.pdf")
