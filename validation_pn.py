@@ -134,7 +134,7 @@ c1.SaveAs("validation_multiplicity.pdf")
 
 #w plot
 c1.Clear()
-hist3 = TH1D('w', 'w', 500, 0, 5000)
+hist3 = TH1D('w', 'w', 100, 0, 5000)
 fill_hist(hist3, wVec)
 hist3.SetTitle("W")
 #hist3.SetFillColor(10)
