@@ -77,7 +77,7 @@ for entry in xrange(0, tree.GetEntries()):
 #ROOT
 c1 = TCanvas("c1")
 c1.SetLogy()
-hist = TH1D('readoutEdep', 'readoutEdep', 50, 0, 200)
+hist = TH1D('readoutEdep', 'readoutEdep', 50, 0, 100)
 fill_hist(hist, eDepReadout)
 hist.SetTitle( "Readout Hit Energy Deposited in ECal")
 #change style
@@ -86,7 +86,7 @@ hist.SetTitle( "Readout Hit Energy Deposited in ECal")
 hist.Draw()
 c1.SaveAs("eDepReadoutEcal.pdf")
 
-hist2 = TH1D('summedEdep', 'summedEdep', 50, 0, 500)
+hist2 = TH1D('summedEdep', 'summedEdep', 75, 0, 150)
 fill_hist(hist2, eDepSummed)
 hist2.SetTitle( "Summed Hit Energy Deposited in ECal")
 #change style
