@@ -41,11 +41,11 @@ def find_theta(particle) :
 def wExpression(particle):
     if (particle):
         mom = np.linalg.norm(particle.getMomentum())
-        print("Momentum is: " + str(mom))
+        #print("Momentum is: " + str(mom))
         kin = particle.getEnergy()
-        print("kinetic energy is: " + str(kin))
+        #print("kinetic energy is: " + str(kin))
         delt = 0.5
-        print("W is equal to: " + str((mom + kin)/(2*math.sqrt(1 + math.pow(delt, 2)))) - delt*np.cos(find_theta(particle)))
+        #print("W is equal to: " + str((mom + kin)/(2*math.sqrt(1 + math.pow(delt, 2)))) - delt*np.cos(find_theta(particle)))
         return ((mom + kin)/(2*math.sqrt(1 + math.pow(delt, 2)))) - delt*np.cos(find_theta(particle))
 
 parser = argparse.ArgumentParser(description='')
@@ -107,8 +107,6 @@ for entry in xrange(0, tree.GetEntries()):
         #Append the arrays to plot now
         hardestHadronMomVec = np.append(hardestHadronMomVec, hardestHadronMom)
         wVec.append(maxW)
-        
-    
 
 #Histograms
 
