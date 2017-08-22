@@ -74,7 +74,7 @@ for entry in xrange(0, tree.GetEntries()):
 c1 = TCanvas("c1")
 r.gStyle.SetOptStat(0)
 #c1.SetLogy()
-hist = TH1D('eDep', 'eDep', 30, 0, 30)
+hist = TH1D('eDep', 'eDep', 25, 0, 2.5)
 fill_hist(hist, eDepVec)
 hist.SetTitle( "Energy Deposition in Target Scoring Planes")
 #change style
@@ -84,7 +84,7 @@ hist.Draw()
 c1.SaveAs("EN_eDep_targetScoringPlanes.pdf")
 
 c1.Clear()
-hist2 = TH1D('summedEdep', 'summedEdep', 200, 0, 400)
+hist2 = TH1D('summedEdep', 'summedEdep', 200, 0, 10)
 fill_hist(hist2, eDepSummed)
 hist2.SetTitle( "Summed Hit Energy Deposited in Target Scoring Planes")
 #change style
