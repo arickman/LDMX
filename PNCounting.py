@@ -132,16 +132,26 @@ for entry in xrange(0, tree.GetEntries()):
 
 
 #Printout the counters of each fraction
-print("The fraction of events with 0 hard charged particles: " + str(zeroCharged/pn_entries))
-print("The fraction of events with 1 hard charged particle: " + str(oneCharged/pn_entries))
-print("The fraction of events with 2 hard charged particles: " + str(twoCharged/pn_entries))
-print("The fraction of events with 3 hard charged particles: " + str(threeCharged/pn_entries))
-print("The fraction of events with 4+ hard charged particles: " + str(fourPlusCharged/pn_entries))
-print("The fraction of events with 0 hard pions: " + str(zeroPion/pn_entries))
-print("The fraction of events with 1 hard pion: " + str(onePion/pn_entries))
-print("The fraction of events with 2 hard pions: " + str(twoPion/pn_entries))
-print("The fraction of events with 3 hard pions: " + str(threePion/pn_entries))
-print("The fraction of events with 4+ hard pions: " + str(fourPlusPion/pn_entries))
+print("The number of events with 0 hard charged particles: " + str(zeroCharged))
+print("The number of events with 1 hard charged particle: " + str(oneCharged)
+print("The number of events with 2 hard charged particles: " + str(twoCharged))
+print("The number of events with 3 hard charged particles: " + str(threeCharged))
+print("The number of events with 4+ hard charged particles: " + str(fourPlusCharged))
+print("The number of events with 0 hard pions: " + str(zeroPion))
+print("The number of events with 1 hard pion: " + str(onePion))
+print("The number of events with 2 hard pions: " + str(twoPion))
+print("The number of events with 3 hard pions: " + str(threePion))
+print("The number of events with 4+ hard pions: " + str(fourPlusPion))
+# print("The fraction of events with 0 hard charged particles: " + str(zeroCharged/pn_entries))
+# print("The fraction of events with 1 hard charged particle: " + str(oneCharged/pn_entries))
+# print("The fraction of events with 2 hard charged particles: " + str(twoCharged/pn_entries))
+# print("The fraction of events with 3 hard charged particles: " + str(threeCharged/pn_entries))
+# print("The fraction of events with 4+ hard charged particles: " + str(fourPlusCharged/pn_entries))
+# print("The fraction of events with 0 hard pions: " + str(zeroPion/pn_entries))
+# print("The fraction of events with 1 hard pion: " + str(onePion/pn_entries))
+# print("The fraction of events with 2 hard pions: " + str(twoPion/pn_entries))
+# print("The fraction of events with 3 hard pions: " + str(threePion/pn_entries))
+# print("The fraction of events with 4+ hard pions: " + str(fourPlusPion/pn_entries))
 
 
 #ROOT
