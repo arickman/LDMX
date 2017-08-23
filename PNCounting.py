@@ -98,6 +98,7 @@ for entry in xrange(0, tree.GetEntries()):
     neutronMult = 0
     hardChargedMult = 0
     hardPionMult = 0
+    if not (PNGamma) : continue
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
