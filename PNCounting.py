@@ -133,7 +133,7 @@ for entry in xrange(0, tree.GetEntries()):
 
 #Printout the counters of each fraction
 print("The number of events with 0 hard charged particles: " + str(zeroCharged))
-print("The number of events with 1 hard charged particle: " + str(oneCharged)
+print("The number of events with 1 hard charged particle: " + str(oneCharged))
 print("The number of events with 2 hard charged particles: " + str(twoCharged))
 print("The number of events with 3 hard charged particles: " + str(threeCharged))
 print("The number of events with 4+ hard charged particles: " + str(fourPlusCharged))
