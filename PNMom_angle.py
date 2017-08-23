@@ -88,6 +88,7 @@ for entry in xrange(0, tree.GetEntries()):
     protonMom = 0
     protonTheta = 0
     pionTheta = 0
+    if not (PNGamma) : continue
     for dCount in xrange(0, PNGamma.getDaughterCount()):
         daughter = PNGamma.getDaughter(dCount)
         if is_pion(daughter) : 
