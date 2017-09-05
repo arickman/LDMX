@@ -116,6 +116,7 @@ for entry in xrange(0, tree.GetEntries()):
     pionMultVec = np.append(pionMultVec, pionMult)
     protonMultVec = np.append(protonMultVec, protonMult) 
     neutronMultVec = np.append(neutronMultVec, neutronMult)
+    hardPionMultVec = np.append(hardPionMultVec, hardPionMult)
     hardChargedMultVec = np.append(hardChargedMultVec, hardChargedMult)
 
 
@@ -144,7 +145,7 @@ hist.SetTitle( "Pion Multiplicity")
 hist.SetFillColor(r.kGreen - 3)
 #hist.SetFillStyle(3025)
 hist.Draw()
-c1.SaveAs("ENpionMult.pdf")
+c1.SaveAs("ENpionMult.root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -154,7 +155,7 @@ hist2.SetTitle("Proton Multiplicity")
 hist2.SetFillColor(r.kBlack)
 #hist2.SetFillStyle(3025)
 hist2.Draw()
-c1.SaveAs("ENprotonMult.pdf")
+c1.SaveAs("ENprotonMult.root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -164,7 +165,7 @@ hist3.SetTitle("Neutron Multiplicity")
 hist3.SetFillColor(r.kRed)
 #hist2.SetFillStyle(3025)
 hist3.Draw()
-c1.SaveAs("ENneutronMult.pdf")
+c1.SaveAs("ENneutronMult.root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -174,7 +175,17 @@ hist4.SetTitle("Hard, Charged Particle Multiplicity")
 hist4.SetFillColor(r.kBlue)
 #hist2.SetFillStyle(3025)
 hist4.Draw()
-c1.SaveAs("ENchargedMult.pdf")
+c1.SaveAs("ENhardChargedMult.root")
+
+c1.Clear()
+#c1.SetLogy()
+hist5 = TH1D('hard, charged pion', 'hard, charged pion', 50, 0, 50)
+fill_hist(hist5, hardPionMultVec)
+hist5.SetTitle("Hard Pion Multiplicity")
+hist5.SetFillColor(r.kBlack)
+#hist2.SetFillStyle(3025)
+hist5.Draw()
+c1.SaveAs("ENhardPionMult.root")
 
 
 
