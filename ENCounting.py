@@ -63,6 +63,7 @@ pionMultVec = []
 protonMultVec = []
 neutronMultVec = []
 hardChargedMultVec = []
+hardPionMultVec = []
 zeroCharged = 0
 oneCharged = 0
 twoCharged = 0
