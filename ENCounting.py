@@ -59,6 +59,7 @@ tree = rfile.Get("LDMX_Events")
 sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
+totalMultVec = []
 pionMultVec = []
 protonMultVec = []
 neutronMultVec = []
@@ -91,6 +92,7 @@ for entry in xrange(0, tree.GetEntries()):
     neutronMult = 0
     hardChargedMult = 0
     hardPionMult = 0
+    totalMult = incidentElectron.getDaughterCount()
     for dCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(dCount)
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
@@ -119,6 +121,7 @@ for entry in xrange(0, tree.GetEntries()):
     neutronMultVec = np.append(neutronMultVec, neutronMult)
     hardPionMultVec = np.append(hardPionMultVec, hardPionMult)
     hardChargedMultVec = np.append(hardChargedMultVec, hardChargedMult)
+    totalMultVec = np.append(totalMultVec, totalMult)
 
 
 
@@ -187,6 +190,16 @@ hist5.SetFillColor(r.kBlack)
 #hist2.SetFillStyle(3025)
 hist5.Draw()
 c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENhardPionMult.root")
+
+c1.Clear()
+#c1.SetLogy()
+hist6 = TH1D('total mult', 'total mult', 100, 0, 100)
+fill_hist(hist6, totalMultVec)
+hist6.SetTitle("Total Multiplicity")
+hist6.SetFillColor(r.kBlack)
+#hist2.SetFillStyle(3025)
+hist6.Draw()
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENTotalMult.root")
 
 
 
