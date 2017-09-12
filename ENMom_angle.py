@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from __future__ import division
 
 import numpy as np
@@ -41,6 +42,8 @@ def find_theta(particle) :
     if np.inner(particle.getMomentum(), beamLineVec) < 0 : print ("NEGATIVE")
     return 57.295779513 * np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
     #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
+
+os.system("source /u/ey/arickman/ldmx/software/setup.sh")
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
