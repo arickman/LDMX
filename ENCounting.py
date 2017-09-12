@@ -5,6 +5,7 @@ import numpy as np
 import ROOT as r
 import argparse
 import copy
+import subprocess
 import os
 import math
 import matplotlib
@@ -43,7 +44,14 @@ def find_theta(particle) :
     return 57.295779513 * np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
     #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
 
-os.system("source /u/ey/arickman/ldmx/users/arickman/LDMX/setup.sh")
+command = ['bash', '-c', 'source /nfs/slac/g/ldmx/software/setup.sh && env']
+proc = subprocess.Popen(command, stdout=subprocess.PIPE)
+
+for line in proc.stdout:
+    (key, _, value) = line.partition('=')
+    os.environ[key] = value.strip()
+
+proc.communicate()
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
