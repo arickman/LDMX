@@ -2,7 +2,6 @@
 from __future__ import division
 
 import numpy as np
-import ROOT as r
 import argparse
 import copy
 import subprocess
@@ -12,6 +11,20 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+from matplotlib.backends.backend_pdf import PdfPages
+from matplotlib.colors import LogNorm
+
+command = ['bash', '-c', 'source /nfs/slac/g/ldmx/users/arickman/LDMX/setup.sh && env']
+proc = subprocess.Popen(command, stdout=subprocess.PIPE)
+
+for line in proc.stdout:
+    (key, _, value) = line.partition('=')
+    os.environ[key] = value.strip()
+
+proc.communicate()
+
+import ROOT as r
+
 from ROOT import TFile,TTree,AddressOf,gROOT
 from ROOT import TCanvas
 from ROOT import TH1D
@@ -19,9 +32,6 @@ from ROOT import TH2D
 from ROOT import TLegend
 from ROOT import TColor
 from root_numpy import fill_hist
-
-from matplotlib.backends.backend_pdf import PdfPages
-from matplotlib.colors import LogNorm
 
 def created_within_target(particle) :
     if abs(particle.getVertex()[2]) < 0.550 : return True 
@@ -43,15 +53,6 @@ def find_theta(particle) :
     if np.inner(particle.getMomentum(), beamLineVec) < 0 : print ("NEGATIVE")
     return 57.295779513 * np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
     #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
-
-command = ['bash', '-c', 'source /nfs/slac/g/ldmx/users/arickman/LDMX/setup.sh && env']
-proc = subprocess.Popen(command, stdout=subprocess.PIPE)
-
-for line in proc.stdout:
-    (key, _, value) = line.partition('=')
-    os.environ[key] = value.strip()
-
-proc.communicate()
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('-i', action='store', dest='rfile_path', 
