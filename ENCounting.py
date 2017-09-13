@@ -44,7 +44,7 @@ def find_theta(particle) :
     return 57.295779513 * np.arccos((np.inner(particle.getMomentum(), beamLineVec))/(particle.getMomentum()[2] * np.linalg.norm(daughter.getMomentum())))
     #daughter.getMomentum()[2]/(np.linalg.norm(daughter.getMomentum()))
 
-command = ['bash', '-c', 'source /nfs/slac/g/ldmx/software/setup.sh && env']
+command = ['bash', '-c', 'source /nfs/slac/g/ldmx/users/arickman/LDMX/setup.sh && env']
 proc = subprocess.Popen(command, stdout=subprocess.PIPE)
 
 for line in proc.stdout:
