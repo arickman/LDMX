@@ -58,6 +58,9 @@ parser.add_argument('-i', action='store', dest='rfile_path',
                     help='ROOT file to processed.')
 args = parser.parse_args()
 
+filename = args.rfile_path
+b1,b2,b3,b4,b5,b6,b7,nameToSave = filename.split("_")
+
 if not args.rfile_path:
     parser.error('A ROOT file needs to be specified')
 
@@ -122,7 +125,7 @@ hist = TH2D('Theta Vs Momentum', 'Theta vs Mom', 36, 0, 180, 50, 0, 5000)
 fill_hist(hist, pionArray)
 hist.SetTitle("Theta vs Momentum(pion) for Single pion Final State")
 hist.Draw("COLZ")
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENangleMomPion.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENangleMomPion_" + nameToSave+ ".root")
 
 #Scatter plot of theta vs T(proton) for single proton final state
 c1.Clear()
@@ -130,7 +133,7 @@ hist2 = TH2D('Theta Vs Momentum', 'Theta Vs Momentum', 36, 0, 180, 50, 0, 5000)
 fill_hist(hist2, protonArray)
 hist2.SetTitle("Theta vs Momentum(proton) for Single proton Final State")
 hist2.Draw("COLZ")
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENangleMomProton.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENangleMomProton_" + nameToSave + ".root")
 
 
 

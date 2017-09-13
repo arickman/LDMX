@@ -58,6 +58,9 @@ parser.add_argument('-i', action='store', dest='rfile_path',
                     help='ROOT file to processed.')
 args = parser.parse_args()
 
+filename = args.rfile_path
+b1,b2,b3,b4,b5,b6,b7,nameToSave = filename.split("_")
+
 if not args.rfile_path:
     parser.error('A ROOT file needs to be specified')
 
@@ -160,7 +163,7 @@ hist.SetTitle( "Pion Multiplicity")
 hist.SetFillColor(r.kGreen - 3)
 #hist.SetFillStyle(3025)
 hist.Draw()
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENpionMult.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENpionMult_" + nameToSave +".root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -170,7 +173,7 @@ hist2.SetTitle("Proton Multiplicity")
 hist2.SetFillColor(r.kBlack)
 #hist2.SetFillStyle(3025)
 hist2.Draw()
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENprotonMult.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENprotonMult_" + nameToSave +".root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -180,7 +183,7 @@ hist3.SetTitle("Neutron Multiplicity")
 hist3.SetFillColor(r.kRed)
 #hist2.SetFillStyle(3025)
 hist3.Draw()
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENneutronMult.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENneutronMult_" + nameToSave +".root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -190,7 +193,7 @@ hist4.SetTitle("Hard, Charged Particle Multiplicity")
 hist4.SetFillColor(r.kBlue)
 #hist2.SetFillStyle(3025)
 hist4.Draw()
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENhardChargedMult.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENhardChargedMult_" + nameToSave +".root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -200,7 +203,7 @@ hist5.SetTitle("Hard Pion Multiplicity")
 hist5.SetFillColor(r.kBlack)
 #hist2.SetFillStyle(3025)
 hist5.Draw()
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENhardPionMult.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENhardPionMult_" + nameToSave +".root")
 
 c1.Clear()
 #c1.SetLogy()
@@ -210,7 +213,7 @@ hist6.SetTitle("Total Multiplicity")
 hist6.SetFillColor(r.kBlack)
 #hist2.SetFillStyle(3025)
 hist6.Draw()
-c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENTotalMult.root")
+c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/ENTotalMult_" + nameToSave +".root")
 
 
 
