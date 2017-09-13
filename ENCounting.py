@@ -197,7 +197,7 @@ c1.SaveAs("/nfs/slac/g/ldmx/production/arickman/4pt0_gev_e_target_en_v3_magnet/E
 
 c1.Clear()
 #c1.SetLogy()
-hist5 = TH1D('hard, charged pion', 'hard, charged pion', 50, 0, 50)
+hist5 = TH1D('hard, charged pion', 'hard, charged pion', 10, 0, 10)
 fill_hist(hist5, hardPionMultVec)
 hist5.SetTitle("Hard Pion Multiplicity")
 hist5.SetFillColor(r.kBlack)
