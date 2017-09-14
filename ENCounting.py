@@ -62,7 +62,9 @@ parser.add_argument('-i', action='store', dest='rfile_path',
 args = parser.parse_args()
 
 filename = args.rfile_path
-b1,b2,b3,b4,b5,b6,b7,nameToSave = filename.split("_")
+if "_" in filename:
+    b1,b2,b3,b4,b5,b6,b7,nameToSave = filename.split("_")
+else: nameToSave = "error"
 
 if not args.rfile_path:
     parser.error('A ROOT file needs to be specified')
