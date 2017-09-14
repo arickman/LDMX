@@ -23,6 +23,8 @@ for line in proc.stdout:
 
 proc.communicate()
 
+os.system("source /nfs/slac/g/ldmx/users/arickman/LDMX/setup.sh")
+
 import ROOT as r
 
 from ROOT import TFile,TTree,AddressOf,gROOT
