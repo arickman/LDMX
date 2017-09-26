@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import subprocess
+import time
 
 def submitJobs(path) :
     fileList = os.listdir(path)
@@ -13,20 +14,18 @@ def submitJobs(path) :
             (key, _, value) = line.partition('=')
             os.environ[key] = value.strip()
 
-        for key in os.environ: 
-            print 'Key: %s, Value: %s' % (key, os.environ[key])
+        #for key in os.environ: 
+         #   print 'Key: %s, Value: %s' % (key, os.environ[key])
 
         proc.communicate()
 
         print "File: %s" % fileList[i]
         print fileList[i][:-5] + '_results.root'
         
-
         os.system("bsub python /nfs/slac/g/ldmx/users/arickman/LDMX/ENCounting.py -i /nfs/slac/g/ldmx/production/target_en_output/" + fileList[i])
         
         time.sleep(1)
     
-
         os.system("bsub python /nfs/slac/g/ldmx/users/arickman/LDMX/ENMom_angle.py -i /nfs/slac/g/ldmx/production/target_en_output/" + fileList[i])
         time.sleep(1)
 
