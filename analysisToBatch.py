@@ -27,7 +27,7 @@ def submitJobs(path) :
         time.sleep(1)
     
 
-        #os.system("bsub python /nfs/slac/g/ldmx/users/arickman/LDMX/ENMom_angle.py -i /nfs/slac/g/ldmx/production/target_en_output/" + fileList[i])
-        #time.sleep(1)
+        os.system("bsub python /nfs/slac/g/ldmx/users/arickman/LDMX/ENMom_angle.py -i /nfs/slac/g/ldmx/production/target_en_output/" + fileList[i])
+        time.sleep(1)
 
 submitJobs("/nfs/slac/g/ldmx/production/target_en_output/")
