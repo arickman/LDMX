@@ -64,7 +64,7 @@ args = parser.parse_args()
 filename = args.rfile_path
 if "_" in filename:
     b1,b2,b3,b4,b5,b6,b7,nameToSave = filename.split("_")
-else: filename = "error"
+else: nameToSave = "error"
 
 if not args.rfile_path:
     parser.error('A ROOT file needs to be specified')
