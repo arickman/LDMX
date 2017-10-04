@@ -128,15 +128,15 @@ for entry in xrange(0, tree.GetEntries()):
 
     if neutronMult == 0 : 
         print("total = " + str(totalMult))
-        print (" 0 neutrons. Distribution = ... ")
+        print (" 0 NEUTRONS")
         #print(particle_dict)
     if protonMult == 0 : 
         print("total = " + str(totalMult))
-        print (" 0 protons. Distribution = ... ")
+        print (" 0 PROTONS")
         #print(particle_dict)
     if pionMult == 0 : 
         print("total = " + str(totalMult))
-        print (" 0 pions. Distribution = ... ")
+        print (" 0 PIONS.")
         #print(particle_dict)
 
 
