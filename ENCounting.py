@@ -129,15 +129,15 @@ for entry in xrange(0, tree.GetEntries()):
     if neutronMult == 0 : 
         print("total = " + str(totalMult))
         print (" 0 neutrons. Distribution = ... ")
-        print(particle_dict)
+        #print(particle_dict)
     if protonMult == 0 : 
         print("total = " + str(totalMult))
         print (" 0 protons. Distribution = ... ")
-        print(particle_dict)
+        #print(particle_dict)
     if pionMult == 0 : 
         print("total = " + str(totalMult))
         print (" 0 pions. Distribution = ... ")
-        print(particle_dict)
+        #print(particle_dict)
 
 
     #Add to the charged particle counters:
