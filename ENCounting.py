@@ -117,7 +117,6 @@ for entry in xrange(0, tree.GetEntries()):
     particle_dict = collections.defaultdict(lambda: 0)
     for dCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(dCount)
-        print(str(daughter.getPdgID()))
         particle_dict[str(daughter.getPdgID())] += 1
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
         if is_pion(daughter) and daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardPionMult += 1
@@ -126,21 +125,17 @@ for entry in xrange(0, tree.GetEntries()):
         if daughter.getPdgID() == 2212 : protonMult += 1
             
 
+    print("total = " + str(totalMult))
     if neutronMult == 0 : 
-        print("total = " + str(totalMult))
         print (" 0 NEUTRONS")
-        print(particle_dict)
     if protonMult == 0 : 
-        print("total = " + str(totalMult))
         print (" 0 PROTONS")
-        print(particle_dict)
     if pionMult == 0 : 
-        print("total = " + str(totalMult))
         print (" 0 PIONS.")
-        print(particle_dict)
+    print(particle_dict)
 
     #to separate events
-    print("****************************************************************************")
+    print("************************************************************************************************************************************************************")
 
 
     #Add to the charged particle counters:
