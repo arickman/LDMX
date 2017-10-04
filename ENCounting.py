@@ -117,7 +117,7 @@ for entry in xrange(0, tree.GetEntries()):
     totalMult = incidentElectron.getDaughterCount()
     for dCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(dCount)
-        particle_dict[daughter.getPdgID()] += 1
+        particle_dict[str(daughter.getPdgID())] += 1
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
         if is_pion(daughter) and daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardPionMult += 1
         if is_pion(daughter) : pionMult += 1
@@ -154,7 +154,7 @@ for entry in xrange(0, tree.GetEntries()):
 
     #Append the arrays to plot 
     pionMultVec = np.append(pionMultVec, pionMult)
-    protonMultVec = np.append(protonMultVec, protonMult) 
+    protonMultVec = np.append(protonMultVec, protonMult)
     neutronMultVec = np.append(neutronMultVec, neutronMult)
     hardPionMultVec = np.append(hardPionMultVec, hardPionMult)
     hardChargedMultVec = np.append(hardChargedMultVec, hardChargedMult)
