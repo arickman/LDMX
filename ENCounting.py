@@ -80,7 +80,6 @@ tree = rfile.Get("LDMX_Events")
 sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
-particle_dict = collections.defaultdict(lambda: 0)
 totalMultVec = []
 pionMultVec = []
 protonMultVec = []
@@ -115,6 +114,7 @@ for entry in xrange(0, tree.GetEntries()):
     hardChargedMult = 0
     hardPionMult = 0
     totalMult = incidentElectron.getDaughterCount()
+    particle_dict = collections.defaultdict(lambda: 0)
     for dCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(dCount)
         print(str(daughter.getPdgID()))
