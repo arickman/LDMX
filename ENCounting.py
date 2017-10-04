@@ -79,6 +79,7 @@ tree = rfile.Get("LDMX_Events")
 sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
+daughterDistribution = []
 totalMultVec = []
 pionMultVec = []
 protonMultVec = []
@@ -115,12 +116,24 @@ for entry in xrange(0, tree.GetEntries()):
     totalMult = incidentElectron.getDaughterCount()
     for dCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(dCount)
+        daughterDistribution[daughter.getPdgID()] += 1
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
         if is_pion(daughter) and daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardPionMult += 1
         if is_pion(daughter) : pionMult += 1
         if daughter.getPdgID() == 2112 : neutronMult += 1
         if daughter.getPdgID() == 2212 : protonMult += 1
             
+
+    if neutronMult == 0 : 
+        print (" 0 neutrons. Distribution = ... ")
+        print(daughterDistribution)
+    if protonMult == 0 : 
+        print (" 0 protons. Distribution = ... ")
+        print(daughterDistribution)
+    if pionMult == 0 : 
+        print (" 0 pions. Distribution = ... ")
+        print(daughterDistribution)
+
 
     #Add to the charged particle counters:
     if hardChargedMult == 0 : zeroCharged += 1
