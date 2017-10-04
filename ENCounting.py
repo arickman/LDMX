@@ -117,6 +117,7 @@ for entry in xrange(0, tree.GetEntries()):
     totalMult = incidentElectron.getDaughterCount()
     for dCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(dCount)
+        print(str(daughter.getPdgID()))
         particle_dict[str(daughter.getPdgID())] += 1
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
         if is_pion(daughter) and daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardPionMult += 1
