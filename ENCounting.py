@@ -140,7 +140,7 @@ for entry in xrange(0, tree.GetEntries()):
         print(particle_dict)
 
     #to separate events
-    print("**************************")
+    print("****************************************************************************")
 
 
     #Add to the charged particle counters:
