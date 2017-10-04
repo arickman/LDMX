@@ -139,6 +139,9 @@ for entry in xrange(0, tree.GetEntries()):
         print (" 0 PIONS.")
         #print(particle_dict)
 
+    #to separate events
+    print("**************************")
+
 
     #Add to the charged particle counters:
     if hardChargedMult == 0 : zeroCharged += 1
