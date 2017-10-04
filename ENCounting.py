@@ -2,6 +2,7 @@
 from __future__ import division
 
 import numpy as np
+import collections
 import argparse
 import copy
 import subprocess
@@ -79,7 +80,7 @@ tree = rfile.Get("LDMX_Events")
 sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
-daughterDistribution = {}
+particle_dict = collections.defaultdict(lambda: 0)
 totalMultVec = []
 pionMultVec = []
 protonMultVec = []
@@ -116,7 +117,7 @@ for entry in xrange(0, tree.GetEntries()):
     totalMult = incidentElectron.getDaughterCount()
     for dCount in xrange(0, incidentElectron.getDaughterCount()):
         daughter = incidentElectron.getDaughter(dCount)
-        daughterDistribution[daughter.getPdgID()] += 1
+        particle_dict[daughter.getPdgID()] += 1
         if daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardChargedMult += 1
         if is_pion(daughter) and daughter.getCharge() != 0 and np.linalg.norm(daughter.getMomentum()) > 50 : hardPionMult += 1
         if is_pion(daughter) : pionMult += 1
@@ -126,13 +127,13 @@ for entry in xrange(0, tree.GetEntries()):
 
     if neutronMult == 0 : 
         print (" 0 neutrons. Distribution = ... ")
-        print(daughterDistribution)
+        print(particle_dict)
     if protonMult == 0 : 
         print (" 0 protons. Distribution = ... ")
-        print(daughterDistribution)
+        print(particle_dict)
     if pionMult == 0 : 
         print (" 0 pions. Distribution = ... ")
-        print(daughterDistribution)
+        print(particle_dict)
 
 
     #Add to the charged particle counters:
