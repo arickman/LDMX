@@ -79,7 +79,7 @@ tree = rfile.Get("LDMX_Events")
 sParticles = r.TClonesArray('ldmx::SimParticle')
 tree.SetBranchAddress("SimParticles_sim", r.AddressOf(sParticles))
 
-daughterDistribution = []
+daughterDistribution = {}
 totalMultVec = []
 pionMultVec = []
 protonMultVec = []
